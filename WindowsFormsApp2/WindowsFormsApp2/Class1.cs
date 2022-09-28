@@ -23,6 +23,9 @@ namespace WindowsFormsApp2
         TextBox textBox1;
         Rectangle rectangle;
         private List<Queue<bool>> partyMemberRefreshTimer;
+        private List<Queue<bool>> partyMemberHasteIITimer;
+        private Queue<bool> temperTimer;
+        private Queue<bool> enwaterIITimer;
         private Queue<bool> followQueue;
         private Queue<bool> followPartyMember2Queue;
         private Queue<bool> engagedQueue;
@@ -92,6 +95,21 @@ namespace WindowsFormsApp2
         public void setRefreshTimerReference(List<Queue<bool>> list)
         {
             partyMemberRefreshTimer = list;
+        }
+
+        public void setHasteIITimerReference(List<Queue<bool>> list)
+        {
+            partyMemberHasteIITimer = list;
+        }
+
+        public void setTemperTimerReference(Queue<bool> queue)
+        {
+            temperTimer = queue;
+        }
+
+        public void setEnwaterIITimerReference(Queue<bool> queue)
+        {
+            enwaterIITimer = queue;   
         }
 
         public void setFollowQueue(Queue<bool> queue)
@@ -165,6 +183,43 @@ namespace WindowsFormsApp2
                 else if (followPartyMember2Queue.Count == 0)
                 {
                     followTarget(2, partySize);
+                }
+            }
+            else if (str == "Convert")
+            {
+                const int DELAY = 100;
+                const int DELAY_AFTER_USE = 2000;
+
+                bool shouldUse = false;
+
+                if (isMPLow(1, partySize) == true)
+                {
+                    shouldUse = true;
+                }
+                else
+                {
+                    shouldUse = false;
+                }
+
+                if (shouldUse == true)
+                {
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    appendText("Using convert");
+                    AutoItX.Send("/ja Convert <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+                    Thread.Sleep(DELAY_AFTER_USE);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
                 }
             }
             else if (str == "Cure")
@@ -616,6 +671,123 @@ namespace WindowsFormsApp2
                     }
                 }
             }
+            else if (str == "Haste II Party Member")
+            {
+                const int DELAY = 100;
+                const int HASTE_II_CAST_TIME = 3000;
+                const int DELAY_AFTER_CAST = 2000;
+
+                appendText("Casting Haste II on " + target);
+                stopFollow();
+                Thread.Sleep(DELAY);
+                AutoItX.Send("/ma \"Haste II\" " + target);
+                Thread.Sleep(DELAY);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(HASTE_II_CAST_TIME + DELAY_AFTER_CAST);
+
+                partyMemberHasteIITimer[partyMember].Enqueue(true);
+                new Thread(() =>
+                {
+                    if (partyMember == 1)
+                    {
+                        if (isComposureActive() == true)
+                        {
+                            appendText("Composure recognized");
+                            Thread.Sleep(405000);
+                        }
+                        else
+                        {
+                            appendText("Composure not recognized");
+                            Thread.Sleep(135000);
+                        }
+                    }
+                    else
+                    {
+                        appendText("Party member not 1");
+                        Thread.Sleep(180000);
+                    }
+                    if (partyMemberHasteIITimer[partyMember].Count > 0)
+                    {
+                        partyMemberHasteIITimer[partyMember].Dequeue();
+                    }
+                }).Start();
+
+                if (followQueue.Count > 0)
+                {
+                    followQueue.Dequeue();
+                    followTarget(2, partySize);
+                }
+                else if (followPartyMember2Queue.Count == 0)
+                {
+                    followTarget(2, partySize);
+                }
+            }
+            else if (str == "Haste Samba")
+            {
+                const int DELAY = 100;
+                const int HASTE_SAMBA_CAST_TIME = 1000;
+                const int DELAY_AFTER_CAST = 2000;
+                bool shouldUse = false;
+
+                if (isHasteSambaActive() == false)
+                {
+                    shouldUse = true;
+                }
+
+                if (shouldUse == true)
+                {
+                    appendText("Using haste samba");
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("/ja \"Haste Samba\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+                    Thread.Sleep(HASTE_SAMBA_CAST_TIME + DELAY_AFTER_CAST);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
+            else if (str == "Advancing March")
+            {
+                const int DELAY = 100;
+                const int ADVANCING_MARCH_CAST_TIME = 10000;
+                const int DELAY_AFTER_CAST = 2000;
+                bool shouldCast = false;
+
+                if (isAdvancingMarchActive() == false)
+                {
+                    shouldCast = true;
+                }
+
+                if (shouldCast == true)
+                {
+                    appendText("Using advancing march");
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("/ma \"Advancing March\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+                    Thread.Sleep(ADVANCING_MARCH_CAST_TIME + DELAY_AFTER_CAST);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
             else if (str == "Enwater II")
             {
                 const int DELAY = 100;
@@ -623,7 +795,7 @@ namespace WindowsFormsApp2
                 const int DELAY_AFTER_CAST = 2000;
                 bool shouldCast = false;
 
-                if (isEnwaterActive() == false)
+                if (enwaterIITimer.Count == 0)
                 {
                     shouldCast = true;
                 }
@@ -637,6 +809,77 @@ namespace WindowsFormsApp2
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
                     Thread.Sleep(ENWATER_II_CAST_TIME + DELAY_AFTER_CAST);
+
+                    enwaterIITimer.Enqueue(true);
+                    new Thread(() =>
+                    {
+                        if (isComposureActive() == true)
+                        {
+                            appendText("Composure recognized");
+                            Thread.Sleep(540000);
+                        }
+                        else
+                        {
+                            appendText("Composure not recognized");
+                            Thread.Sleep(180000);
+                        }
+                        if (enwaterIITimer.Count > 0)
+                        {
+                            enwaterIITimer.Dequeue();
+                        }
+                    }).Start();
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
+            else if (str == "Temper")
+            {
+                const int DELAY = 100;
+                const int TEMPER_CAST_TIME = 3000;
+                const int DELAY_AFTER_CAST = 2000;
+                bool shouldCast = false;
+
+                if (temperTimer.Count == 0)
+                {
+                    shouldCast = true;
+                }
+
+                if (shouldCast == true)
+                {
+                    appendText("Casting temper");
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("/ma \"Temper\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+                    Thread.Sleep(TEMPER_CAST_TIME + DELAY_AFTER_CAST);
+
+                    temperTimer.Enqueue(true);
+                    new Thread(() =>
+                    {
+                        if (isComposureActive() == true)
+                        {
+                            appendText("Composure recognized");
+                            Thread.Sleep(540000);
+                        }
+                        else
+                        {
+                            appendText("Composure not recognized");
+                            Thread.Sleep(180000);
+                        }
+                        if (temperTimer.Count > 0)
+                        {
+                            temperTimer.Dequeue();
+                        }
+                    }).Start();
 
                     if (followQueue.Count > 0)
                     {
@@ -683,7 +926,8 @@ namespace WindowsFormsApp2
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
                     Thread.Sleep(2000);
-                    followTarget();
+                    stopFollow();
+                    followTarget(2, partySize);
                 }
             }
             else if (str == "Follow Party Member 2")
@@ -727,6 +971,105 @@ namespace WindowsFormsApp2
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
                     Thread.Sleep(RAISE_CAST_TIME + DELAY_AFTER_CAST);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
+            else if (str == "Echo Drops")
+            {
+                const int DELAY = 100;
+                const int ECHO_DROPS_USE_TIME = 1000;
+                const int DELAY_AFTER_USE = 0;
+                bool shouldUse = false;
+
+                if (isSilenced() == true)
+                {
+                    shouldUse = true;
+                }
+
+                if (shouldUse == true)
+                {
+                    appendText("Using echo drops...");
+                    stopFollow();
+                    AutoItX.Send("/item \"Echo Drops\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+
+                    Thread.Sleep(ECHO_DROPS_USE_TIME + DELAY_AFTER_USE);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
+            else if (str == "Remedy")
+            {
+                const int DELAY = 100;
+                const int REMEDY_USE_TIME = 1000;
+                const int DELAY_AFTER_USE = 0;
+                bool shouldUse = false;
+
+                if (isParalyzed() == true)
+                {
+                    shouldUse = true;
+                }
+
+                if (shouldUse == true)
+                {
+                    appendText("Using remedy...");
+                    stopFollow();
+                    AutoItX.Send("/item \"Remedy\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+
+                    Thread.Sleep(REMEDY_USE_TIME + DELAY_AFTER_USE);
+
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize);
+                    }
+                }
+            }
+            else if (str == "Holy Water")
+            {
+                const int DELAY = 100;
+                const int HOLY_WATER_USE_TIME = 1000;
+                const int DELAY_AFTER_USE = 0;
+                bool shouldUse = false;
+
+                if (isCursed() == true)
+                {
+                    shouldUse = true;
+                }
+
+                if (shouldUse == true)
+                {
+                    appendText("Using holy water...");
+                    stopFollow();
+                    AutoItX.Send("/item \"Holy Water\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+
+                    Thread.Sleep(HOLY_WATER_USE_TIME + DELAY_AFTER_USE);
 
                     if (followQueue.Count > 0)
                     {
@@ -790,8 +1133,21 @@ namespace WindowsFormsApp2
 
         private bool isPartyMemberYellowHP(Rectangle rectangle)
         {
-            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "7", @".\images\player-yellow-hp-bar-pixel.png");
-            if (results == null)
+            string[] yellowHpImages = { @".\images\player-yellow-hp-bar-pixel.png", @"/\images\player-yellow-hp-bar-pixel-2.png" };
+            bool found = false;
+            for (int i = 0; i < yellowHpImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "7", yellowHpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
             {
                 return false;
             }
@@ -887,15 +1243,17 @@ namespace WindowsFormsApp2
                 followPartyMember2Queue.Dequeue();
                 followQueue.Enqueue(true);
                 AutoItX.Send("/follow");
-                Thread.Sleep(100);
+                Thread.Sleep(750);
                 AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
             }
             else if (followQueue.Count == 0)
             {
                 followQueue.Enqueue(true);
                 AutoItX.Send("/follow");
-                Thread.Sleep(100);
+                Thread.Sleep(750);
                 AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
             }
             else
             {
@@ -1039,15 +1397,17 @@ namespace WindowsFormsApp2
                 followQueue.Dequeue();
                 followPartyMember2Queue.Enqueue(true);
                 AutoItX.Send("/follow " + partyMemberString);
-                Thread.Sleep(100);
+                Thread.Sleep(750);
                 AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
             }
             else if (followPartyMember2Queue.Count == 0)
             {
                 followPartyMember2Queue.Enqueue(true);
                 AutoItX.Send("/follow " + partyMemberString);
-                Thread.Sleep(100);
+                Thread.Sleep(750);
                 AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
             }
             else
             {
@@ -1134,6 +1494,172 @@ namespace WindowsFormsApp2
             else
             {
                 return true;
+            }
+        }
+
+        bool isHasteSambaActive()
+        {
+            string[] hasteSambaImages = { @".\images\haste_samba.png", @".\images\haste_samba_2.png" };
+            if (File.Exists(hasteSambaImages[0]) == false)
+            {
+                return false;
+            }
+
+            Rectangle rectangle = new Rectangle(0, 0, 420, 150);
+            bool found = false;
+
+            for (int i = 0; i < hasteSambaImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "10", hasteSambaImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
+            {
+                appendText("Haste samba status is not found");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        bool isAdvancingMarchActive()
+        {
+            string[] advancingMarchImages = { @".\images\advancing_march.png", @".\images\advancing_march_2.png" };
+            if (File.Exists(advancingMarchImages[0]) == false)
+            {
+                return false;
+            }
+
+            Rectangle rectangle = new Rectangle(0, 0, 420, 150);
+            bool found = false;
+
+            for (int i = 0; i < advancingMarchImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "15", advancingMarchImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == false)
+            {
+                appendText("Advancing march status is not found");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        bool isParalyzed()
+        {
+            string[] paralyzedImages = { @".\images\paralysis.png" };
+            if (File.Exists(paralyzedImages[0]) == false)
+            {
+                return false;
+            }
+
+            Rectangle rectangle = new Rectangle(0, 0, 420, 150);
+            bool found = false;
+            for (int i = 0; i < paralyzedImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "15", paralyzedImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    appendText("Paralysis status found");
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool isSilenced()
+        {
+            string[] silencedImages = { @".\images\silenced.png", @".\images\silenced2.png" };
+            if (File.Exists(silencedImages[0]) == false)
+            {
+                return false;
+            }
+
+            Rectangle rectangle = new Rectangle(0, 0, 420, 150);
+            bool found = false;
+            for (int i = 0; i < silencedImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "15", silencedImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool isCursed()
+        {
+            string[] cursedImages = { @".\images\curse.png" };
+            if (File.Exists(cursedImages[0]) == false)
+            {
+                return false;
+            }
+
+            Rectangle rectangle = new Rectangle(0, 0, 420, 150);
+            bool found = false;
+            for (int i = 0; i < cursedImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "15", cursedImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    appendText("Curse status found");
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -1355,12 +1881,12 @@ namespace WindowsFormsApp2
 
         public bool isEngaged(Rectangle rectangle)
         {
-            string[] assistImages = { @".\images\engaged_monster_name_pixel.png", @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
+            string[] assistImages = { @".\images\engaged_monster_name_pixel.png", @".\images\engaged_monster_name_pixel3.png", @".\images\engaged_monster_name_pixel4.png", @".\images\engaged_monster_name_pixel5.png", @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
 
             bool found = false;
             for (int i = 0; i < assistImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "6", assistImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", assistImages[i]);
                 if (results == null)
                 {
                 }
@@ -1471,6 +1997,30 @@ namespace WindowsFormsApp2
                 AutoItX.Send("{Enter}");
                 Thread.Sleep(2000);
             }
+            else if (weaponskill == "Requiescat")
+            {
+                appendText("Using requiescat...");
+                AutoItX.Send("/ws \"Requiescat\" <t>");
+                Thread.Sleep(delay);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(2000);
+            }
+            else if (weaponskill == "Knights of Round")
+            {
+                appendText("Using knights of round...");
+                AutoItX.Send("/ws \"Knights of Round\" <t>");
+                Thread.Sleep(delay);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(2000);
+            }
+            else if (weaponskill == "Chant du Cygne")
+            {
+                appendText("Using chant du cygne...");
+                AutoItX.Send("/ws \"Chant du Cygne\" <t>");
+                Thread.Sleep(delay);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(2000);
+            }
             else if (weaponskill == "Gust Slash")
             {
                 appendText("Using gust slash...");
@@ -1491,6 +2041,35 @@ namespace WindowsFormsApp2
             {
                 appendText("Select a weapon skill from the dropdown list...");
             }
+        }
+
+        bool isWeaponDrawn()
+        {
+            string[] weaponDrawnImages = { @".\images\weapon_drawn.png" };
+
+            bool weaponDrawn = false;
+            for (int i = 0; i < weaponDrawnImages.Length; i++)
+            {
+                string[] results = UseImageSearch(0, 0, 50, 110, "30", weaponDrawnImages[i]);
+                if (results == null)
+                {
+
+                }
+                else
+                {
+                    weaponDrawn = true;
+                }
+            }
+
+            if (weaponDrawn == false)
+            {
+                appendText("Weapon is not out");
+            }
+            else
+            {
+                appendText("Found weapon is drawn");
+            }
+            return weaponDrawn;
         }
 
         Rectangle getPartyMemberDeadRectangle(int partyMember, int partySize)
@@ -1663,6 +2242,219 @@ namespace WindowsFormsApp2
             }
 
             return rectangle;
+        }
+
+        bool isMPLow(int partyMember, int partySize)
+        {
+            int left = 0;
+            int top = 0;
+            int right = 0;
+            int bottom = 0;
+            if (partySize == 6)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 605;
+                    right = 1350;
+                    bottom = 625;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1300;
+                    top = 630;
+                    right = 1350;
+                    bottom = 640;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1300;
+                    top = 650;
+                    right = 1350;
+                    bottom = 660;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1300;
+                    top = 668;
+                    right = 1350;
+                    bottom = 678;
+                }
+                else if (partyMember == 5)
+                {
+                    left = 1300;
+                    top = 685;
+                    right = 1350;
+                    bottom = 695;
+                }
+                else if (partyMember == 6)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 5)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 630;
+                    right = 1350;
+                    bottom = 640;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1300;
+                    top = 650;
+                    right = 1350;
+                    bottom = 660;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1300;
+                    top = 668;
+                    right = 1350;
+                    bottom = 678;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1300;
+                    top = 685;
+                    right = 1350;
+                    bottom = 695;
+                }
+                else if (partyMember == 5)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 4)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 650;
+                    right = 1350;
+                    bottom = 660;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1300;
+                    top = 668;
+                    right = 1350;
+                    bottom = 678;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1300;
+                    top = 685;
+                    right = 1350;
+                    bottom = 695;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 3)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 668;
+                    right = 1350;
+                    bottom = 678;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1300;
+                    top = 685;
+                    right = 1350;
+                    bottom = 695;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 2)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 685;
+                    right = 1350;
+                    bottom = 695;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 1)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1300;
+                    top = 705;
+                    right = 1350;
+                    bottom = 713;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            string[] mpPixelImages = { @".\images\player-green-mp-bar-pixel.png" };
+
+            string[] results = UseImageSearch(left, top, right, bottom, "30", mpPixelImages[0]);
+            if (results == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void appendText(string s)
