@@ -21,6 +21,7 @@ namespace WindowsFormsApp2
         int partySize;
         Control control;
         TextBox textBox1;
+        TextBox textBox2;
         Rectangle rectangle;
         private List<Queue<bool>> partyMemberRefreshTimer;
         private List<Queue<bool>> partyMemberHasteIITimer;
@@ -30,6 +31,7 @@ namespace WindowsFormsApp2
         private Queue<bool> followPartyMember2Queue;
         private Queue<bool> engagedQueue;
         private string weaponskill = "";
+        private bool shouldFollow = false;
 
         [DllImport(@".\lib\ImageSearchDLL.dll")]
         public static extern IntPtr ImageSearch(int x, int y, int right, int bottom, [MarshalAs(UnmanagedType.LPStr)] string imagePath);
@@ -74,6 +76,19 @@ namespace WindowsFormsApp2
             this.followPartyMember2Queue = followPartyMember2Queue;
         }
 
+        public Class1(string str, int cooldownTime, Rectangle rectangle, Queue<bool> followQueue, Queue<bool> followPartyMember2Queue, Control control, TextBox textBox, TextBox textBox2)
+        {
+            this.str = str;
+            this.cooldownTime = cooldownTime;
+            this.rectangle = rectangle;
+            this.control = control;
+            this.textBox1 = textBox;
+            this.textBox2 = textBox2;
+            partyMemberRefreshTimer = null;
+            this.followQueue = followQueue;
+            this.followPartyMember2Queue = followPartyMember2Queue;
+        }
+
         public Class1(string str, int cooldownTime, Rectangle rectangle, Queue<bool> followQueue, Queue<bool> followPartyMember2Queue, Queue<bool> engagedQueue, Control control, TextBox textBox)
         {
             this.str = str;
@@ -81,6 +96,20 @@ namespace WindowsFormsApp2
             this.rectangle = rectangle;
             this.control = control;
             this.textBox1 = textBox;
+            partyMemberRefreshTimer = null;
+            this.followQueue = followQueue;
+            this.followPartyMember2Queue = followPartyMember2Queue;
+            this.engagedQueue = engagedQueue;
+        }
+
+        public Class1(string str, int cooldownTime, Rectangle rectangle, Queue<bool> followQueue, Queue<bool> followPartyMember2Queue, Queue<bool> engagedQueue, Control control, TextBox textBox, TextBox textBox2)
+        {
+            this.str = str;
+            this.cooldownTime = cooldownTime;
+            this.rectangle = rectangle;
+            this.control = control;
+            this.textBox1 = textBox;
+            this.textBox2 = textBox2;
             partyMemberRefreshTimer = null;
             this.followQueue = followQueue;
             this.followPartyMember2Queue = followPartyMember2Queue;
@@ -127,6 +156,11 @@ namespace WindowsFormsApp2
             this.weaponskill = weaponskill;
         }
 
+        public void setFollow(bool shouldFollow)
+        {
+            this.shouldFollow = shouldFollow;
+        }
+
         public string getAction()
         {
             return str;
@@ -149,26 +183,64 @@ namespace WindowsFormsApp2
 
         public void function1()
         {
-            if (str == "Weaponskill")
+            if (str == "Start Skillchain")
             {
-                useWeaponSkill();
+                bool shouldUseWeaponSkill = false;
 
-                if (followQueue.Count > 0)
+                if (hasTP() == true && isSkillchainActive() == false)
                 {
-                    followQueue.Dequeue();
-                    followTarget(2, partySize);
+                    shouldUseWeaponSkill = true;
                 }
-                else if (followPartyMember2Queue.Count == 0)
+
+                if (shouldUseWeaponSkill == true)
                 {
-                    followTarget(2, partySize);
+                    useWeaponSkill();
+
+                    if (shouldFollow == true)
+                    {
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize);
+                        }
+                    }
+                }
+            }
+            else if (str == "Close Skillchain")
+            {
+                bool shouldUseWeaponSkill = false;
+
+                if (hasTP() == true && isSkillchainActive() == true)
+                {
+                    shouldUseWeaponSkill = true;
+                }
+
+                if (shouldUseWeaponSkill == true)
+                {
+                    useWeaponSkill();
+
+                    if (shouldFollow == true) {
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize);
+                        }
+                    }
                 }
             }
             else if (str == "Composure")
             {
                 const int DELAY = 100;
-                const int DELAY_AFTER_USE = 2000;
-                stopFollow();
-                Thread.Sleep(DELAY);
+                const int DELAY_AFTER_USE = 1000;
+                
                 appendText("Using composure");
                 AutoItX.Send("/ja Composure <me>");
                 Thread.Sleep(DELAY);
@@ -188,45 +260,63 @@ namespace WindowsFormsApp2
             else if (str == "Convert")
             {
                 const int DELAY = 100;
-                const int DELAY_AFTER_USE = 2000;
+                const int DELAY_AFTER_USE = 1000;
 
-                bool shouldUse = false;
+                appendText("Using convert");
+                AutoItX.Send("/ja Convert <me>");
+                Thread.Sleep(DELAY);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(DELAY_AFTER_USE);
 
-                if (isMPLow(1, partySize) == true)
+                if (followQueue.Count > 0)
                 {
-                    shouldUse = true;
+                    followQueue.Dequeue();
+                    followTarget(2, partySize);
                 }
-                else
+                else if (followPartyMember2Queue.Count == 0)
                 {
-                    shouldUse = false;
+                    followTarget(2, partySize);
                 }
 
-                if (shouldUse == true)
-                {
-                    stopFollow();
-                    Thread.Sleep(DELAY);
-                    appendText("Using convert");
-                    AutoItX.Send("/ja Convert <me>");
-                    Thread.Sleep(DELAY);
-                    AutoItX.Send("{Enter}");
-                    Thread.Sleep(DELAY_AFTER_USE);
+                //bool shouldUse = false;
 
-                    if (followQueue.Count > 0)
-                    {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
-                    }
-                    else if (followPartyMember2Queue.Count == 0)
-                    {
-                        followTarget(2, partySize);
-                    }
-                }
+                //if (isMPLow(1, partySize) == true
+                //        && isPartyMemberOrangeHP(rectangle) == false
+                //        && isPartyMemberRedHP(rectangle) == false)
+                //{
+                //    shouldUse = true;
+                //}
+                //else
+                //{
+                //    shouldUse = false;
+                //}
+
+                //if (shouldUse == true)
+                //{
+                //    stopFollow();
+                //    Thread.Sleep(DELAY);
+                //    appendText("Using convert");
+                //    AutoItX.Send("/ja Convert <me>");
+                //    Thread.Sleep(DELAY);
+                //    AutoItX.Send("{Enter}");
+                //    Thread.Sleep(DELAY_AFTER_USE);
+
+                //    if (followQueue.Count > 0)
+                //    {
+                //        followQueue.Dequeue();
+                //        followTarget(2, partySize);
+                //    }
+                //    else if (followPartyMember2Queue.Count == 0)
+                //    {
+                //        followTarget(2, partySize);
+                //    }
+                //}
             }
             else if (str == "Cure")
             {
                 const int DELAY = 100;
                 const int CURE_CAST_TIME = 2500;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
                 if (isPartyMemberRedHP(rectangle) == true)
                 {
@@ -249,24 +339,25 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma Cure " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(CURE_CAST_TIME + DELAY_AFTER_CAST);
 
                     if (followQueue.Count > 0)
                     {
                         followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, CURE_CAST_TIME);
                     }
                     else if (followPartyMember2Queue.Count == 0)
                     {
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, CURE_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Cure II")
             {
                 const int DELAY = 100;
                 const int CURE_II_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 bool shouldCast = false;
                 if (isPartyMemberRedHP(rectangle) == true)
@@ -290,27 +381,32 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Cure II\" " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(CURE_II_CAST_TIME + DELAY_AFTER_CAST);
 
                     if (followQueue.Count > 0)
                     {
                         followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, CURE_II_CAST_TIME);
                     }
                     else if (followPartyMember2Queue.Count == 0)
                     {
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, CURE_II_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Cure III")
             {
                 const int DELAY = 100;
                 const int CURE_III_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 bool shouldCast = false;
-                if (isPartyMemberRedHP(rectangle) == true)
+                if (isHPToppedOff(rectangle) == false)
+                {
+                    shouldCast = true;
+                }
+                else if (isPartyMemberRedHP(rectangle) == true)
                 {
                     shouldCast = true;
                 }
@@ -331,28 +427,43 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Cure III\" " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(CURE_III_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, CURE_III_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, CURE_III_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(CURE_III_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
+                }
+                else
+                {
+                    appendText2("NOT GOING TO CURE III");
                 }
             }
             else if (str == "Cure IV")
             {
                 const int DELAY = 100;
                 const int CURE_IV_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 bool shouldCast = false;
-                if (isPartyMemberRedHP(rectangle) == true)
-
+                if (isHPToppedOff(rectangle) == false)
+                {
+                    shouldCast = true;
+                }
+                else if (isPartyMemberRedHP(rectangle) == true)
                 {
                     shouldCast = true;
                 }
@@ -373,24 +484,36 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Cure IV\" " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(CURE_IV_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, CURE_IV_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, CURE_IV_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(CURE_IV_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
+                }
+                else
+                {
+                    appendText2("***** NOT GOING TO CURE IV ******");
                 }
             }
             else if (str == "Refresh")
             {
                 const int DELAY = 100;
                 const int REFRESH_CAST_TIME = 5000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 bool shouldCast = false;
                 if (isPartyMemberMPToppedOff(rectangle) == false)
@@ -450,7 +573,7 @@ namespace WindowsFormsApp2
             {
                 const int DELAY = 100;
                 const int REFRESH_II_CAST_TIME = 5000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 bool shouldCast = false;
                 if (isPartyMemberMPToppedOff(rectangle) == false)
@@ -466,7 +589,6 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Refresh II\" " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(REFRESH_II_CAST_TIME + DELAY_AFTER_CAST);
 
                     partyMemberRefreshTimer[partyMember].Enqueue(true);
                     new Thread(() =>
@@ -498,19 +620,88 @@ namespace WindowsFormsApp2
                     if (followQueue.Count > 0)
                     {
                         followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, REFRESH_II_CAST_TIME);
                     }
                     else if (followPartyMember2Queue.Count == 0)
                     {
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, REFRESH_II_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
+                }
+            }
+            else if (str == "Refresh III")
+            {
+                const int DELAY = 100;
+                const int REFRESH_III_CAST_TIME = 5000;
+                const int DELAY_AFTER_CAST = 1000;
+
+                bool shouldCast = false;
+                if (isPartyMemberMPToppedOff(rectangle) == false)
+                {
+                    shouldCast = true;
+                }
+
+                if (shouldCast == true)
+                {
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    appendText("Casting Refresh III on " + target);
+                    AutoItX.Send("/ma \"Refresh III\" " + target);
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+
+                    partyMemberRefreshTimer[partyMember].Enqueue(true);
+                    new Thread(() =>
+                    {
+                        if (partyMember == 1)
+                        {
+                            if (isComposureActive() == true)
+                            {
+                                appendText("Composure recognized");
+                                Thread.Sleep(405000);
+                            }
+                            else
+                            {
+                                appendText("Composure not recognized");
+                                Thread.Sleep(135000);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Party member not 1");
+                            Thread.Sleep(135000);
+                        }
+                        if (partyMemberRefreshTimer[partyMember].Count > 0)
+                        {
+                            partyMemberRefreshTimer[partyMember].Dequeue();
+                        }
+                    }).Start();
+
+                    if (shouldFollow == true)
+                    {
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, REFRESH_III_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, REFRESH_III_CAST_TIME);
+                        }
+                    }
+                    else
+                    {
+                        Thread.Sleep(REFRESH_III_CAST_TIME);
+                    }
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Stoneskin")
             {
                 const int DELAY = 100;
                 const int STONESKIN_CAST_TIME = 7000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (isStoneskinActive() == false)
@@ -526,24 +717,32 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma Stoneskin <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(STONESKIN_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, STONESKIN_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, STONESKIN_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(STONESKIN_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Utsusemi: Ichi")
             {
                 const int DELAY = 100;
                 const int UTSUSEMI_ICHI_CAST_TIME = 4000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (isUtsusemiActive() == false)
@@ -559,24 +758,32 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/nin \"Utsusemi: Ichi\" <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(UTSUSEMI_ICHI_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, UTSUSEMI_ICHI_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, UTSUSEMI_ICHI_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(UTSUSEMI_ICHI_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Utsusemi: Ni")
             {
                 const int DELAY = 100;
                 const int UTSUSEMI_NI_CAST_TIME = 1500;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (isUtsusemiActive() == false)
@@ -592,17 +799,25 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/nin \"Utsusemi: Ni\" <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(UTSUSEMI_NI_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, UTSUSEMI_NI_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, UTSUSEMI_NI_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
-                    {
-                        followTarget(2, partySize);
+                    else 
+                    { 
+                        Thread.Sleep(UTSUSEMI_NI_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Haste")
@@ -642,7 +857,7 @@ namespace WindowsFormsApp2
             {
                 const int DELAY = 100;
                 const int HASTE_II_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (isHasteActive() == false)
@@ -658,24 +873,32 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Haste II\" <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(HASTE_II_CAST_TIME + DELAY_AFTER_CAST);
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, HASTE_II_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, HASTE_II_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(HASTE_II_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Haste II Party Member")
             {
                 const int DELAY = 100;
                 const int HASTE_II_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
 
                 appendText("Casting Haste II on " + target);
                 stopFollow();
@@ -683,7 +906,6 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ma \"Haste II\" " + target);
                 Thread.Sleep(DELAY);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(HASTE_II_CAST_TIME + DELAY_AFTER_CAST);
 
                 partyMemberHasteIITimer[partyMember].Enqueue(true);
                 new Thread(() =>
@@ -712,15 +934,19 @@ namespace WindowsFormsApp2
                     }
                 }).Start();
 
-                if (followQueue.Count > 0)
+                if (shouldFollow == true)
                 {
-                    followQueue.Dequeue();
-                    followTarget(2, partySize);
+                    if (followQueue.Count > 0)
+                    {
+                        followQueue.Dequeue();
+                        followTarget(2, partySize, HASTE_II_CAST_TIME);
+                    }
+                    else if (followPartyMember2Queue.Count == 0)
+                    {
+                        followTarget(2, partySize, HASTE_II_CAST_TIME);
+                    }
                 }
-                else if (followPartyMember2Queue.Count == 0)
-                {
-                    followTarget(2, partySize);
-                }
+                Thread.Sleep(DELAY_AFTER_CAST);
             }
             else if (str == "Haste Samba")
             {
@@ -792,7 +1018,7 @@ namespace WindowsFormsApp2
             {
                 const int DELAY = 100;
                 const int ENWATER_II_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (enwaterIITimer.Count == 0)
@@ -808,7 +1034,6 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Enwater II\" <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(ENWATER_II_CAST_TIME + DELAY_AFTER_CAST);
 
                     enwaterIITimer.Enqueue(true);
                     new Thread(() =>
@@ -829,22 +1054,31 @@ namespace WindowsFormsApp2
                         }
                     }).Start();
 
-                    if (followQueue.Count > 0)
+                    if (shouldFollow == true)
                     {
-                        followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, ENWATER_II_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, ENWATER_II_CAST_TIME);
+                        }
                     }
-                    else if (followPartyMember2Queue.Count == 0)
+                    else
                     {
-                        followTarget(2, partySize);
+                        Thread.Sleep(ENWATER_II_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Temper")
             {
                 const int DELAY = 100;
                 const int TEMPER_CAST_TIME = 3000;
-                const int DELAY_AFTER_CAST = 2000;
+                const int DELAY_AFTER_CAST = 1000;
                 bool shouldCast = false;
 
                 if (temperTimer.Count == 0)
@@ -860,7 +1094,6 @@ namespace WindowsFormsApp2
                     AutoItX.Send("/ma \"Temper\" <me>");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(TEMPER_CAST_TIME + DELAY_AFTER_CAST);
 
                     temperTimer.Enqueue(true);
                     new Thread(() =>
@@ -884,12 +1117,74 @@ namespace WindowsFormsApp2
                     if (followQueue.Count > 0)
                     {
                         followQueue.Dequeue();
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, TEMPER_CAST_TIME);
                     }
                     else if (followPartyMember2Queue.Count == 0)
                     {
-                        followTarget(2, partySize);
+                        followTarget(2, partySize, TEMPER_CAST_TIME);
                     }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
+                }
+            }
+            else if (str == "Temper II")
+            {
+                const int DELAY = 100;
+                const int TEMPER_II_CAST_TIME = 3000;
+                const int DELAY_AFTER_CAST = 1000;
+                bool shouldCast = false;
+
+                if (temperTimer.Count == 0)
+                {
+                    shouldCast = true;
+                }
+
+                if (shouldCast == true)
+                {
+                    appendText("Casting temper ii");
+                    stopFollow();
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("/ma \"Temper II\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+
+                    temperTimer.Enqueue(true);
+                    new Thread(() =>
+                    {
+                        if (isComposureActive() == true)
+                        {
+                            appendText("Composure recognized");
+                            Thread.Sleep(540000);
+                        }
+                        else
+                        {
+                            appendText("Composure not recognized");
+                            Thread.Sleep(180000);
+                        }
+                        if (temperTimer.Count > 0)
+                        {
+                            temperTimer.Dequeue();
+                        }
+                    }).Start();
+
+                    if (shouldFollow == true)
+                    {
+                        if (followQueue.Count > 0)
+                        {
+                            followQueue.Dequeue();
+                            followTarget(2, partySize, TEMPER_II_CAST_TIME);
+                        }
+                        else if (followPartyMember2Queue.Count == 0)
+                        {
+                            followTarget(2, partySize, TEMPER_II_CAST_TIME);
+                        }
+                    }
+                    else
+                    {
+                        Thread.Sleep(TEMPER_II_CAST_TIME);
+                    }
+
+                    Thread.Sleep(DELAY_AFTER_CAST);
                 }
             }
             else if (str == "Assist")
@@ -902,15 +1197,22 @@ namespace WindowsFormsApp2
                 Thread.Sleep(500);
                 if (isTargetingKikunachi(rectangle) == true)
                 {
-                    Thread.Sleep(DELAY);
                     AutoItX.Send("/assist");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(1000);
 
                     if (isTargetingKikunachi(rectangle) == true)
                     {
                         AutoItX.Send("{ESC}");
+                    }
+                    else if (isTargettingAMonster(rectangle) == true || isEngaged(rectangle) == true)
+                    {
+                        appendText2("CLASS1: Going to fight a monster - Assist");
+                        AutoItX.Send("/attack on");
+                        Thread.Sleep(DELAY);
+                        AutoItX.Send("{Enter}");
+                        stopFollow();
+                        followTarget(2, partySize);
                     }
                 }
             }
@@ -918,14 +1220,12 @@ namespace WindowsFormsApp2
             {
                 const int DELAY = 100;
                 Rectangle rectangle = getTargetRectangle(partySize);
-                if (isEngaged(rectangle) == true)
+                if (isTargettingAMonster(rectangle) == true || isEngaged(rectangle) == true)
                 {
-                    appendText("Going to fight a monster");
-                    Thread.Sleep(DELAY);
+                    appendText2("CLASS1: Going to fight a monster - Check Engaged");
                     AutoItX.Send("/attack on");
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
-                    Thread.Sleep(2000);
                     stopFollow();
                     followTarget(2, partySize);
                 }
@@ -951,6 +1251,10 @@ namespace WindowsFormsApp2
                     appendText("Already following party member 2");
                 }
             }
+            else if (str == "Stop Follow")
+            {
+                stopFollow();
+            }
             else if (str == "Raise")
             {
                 bool shouldCast = false;
@@ -967,6 +1271,10 @@ namespace WindowsFormsApp2
                     appendText("Casting raise on " + target);
                     stopFollow();
                     Thread.Sleep(DELAY);
+                    AutoItX.Send("/ja \"Spontaneity\" <me>");
+                    Thread.Sleep(DELAY);
+                    AutoItX.Send("{Enter}");
+                    Thread.Sleep(1000);
                     AutoItX.Send("/ma Raise " + target);
                     Thread.Sleep(DELAY);
                     AutoItX.Send("{Enter}");
@@ -1082,30 +1390,63 @@ namespace WindowsFormsApp2
                     }
                 }
             }
+            else if (str == "Pull Mob")
+            {
+                Rectangle rectangle = getTargetRectangle(partySize);
+                const int DELAY = 100;
+                bool foundMonster = false;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    AutoItX.Send("{TAB}");
+
+                    if (isTargettingAMonster(rectangle) == true || isEngaged(rectangle) == true)
+                    {
+                        AutoItX.Send("/ma Dia <t>");
+                        Thread.Sleep(DELAY);
+                        AutoItX.Send("{Enter}");
+                        Thread.Sleep(1000);
+
+                        foundMonster = true;
+                        if (isEngaged(rectangle) == true)
+                        {
+                            AutoItX.Send("/attack on");
+                            Thread.Sleep(DELAY);
+                            AutoItX.Send("{Enter}");
+                            Thread.Sleep(DELAY);
+                            stopFollow();
+                            Thread.Sleep(4000);
+                            AutoItX.Send("w");
+                            break;
+                        }
+                    }
+                }
+
+                if (foundMonster == false)
+                {
+                    for (int i = 0; i < 40; i++)
+                        AutoItX.Send("d");
+                }
+                
+
+            }
         }
 
         private bool isPartyMemberMPToppedOff(Rectangle rectangle)
         {
-            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", @".\images\player-green-mp-bar-pixel.png");
-            if (results == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private bool isPartyMemberRedHP(Rectangle rectangle)
-        {
-            string[] redHPImages = { @".\images\player-red-hp-bar-pixel.png", @".\images\player-red-hp-bar-pixel2.png", @".\images\player-red-hp-bar-pixel3.png" };
+            string[] greenMpPixelImages = { @".\images\player-green-mp-bar-pixel.png",
+                @".\images\player-green-mp-bar-pixel-2.png",
+                @".\images\player-green-mp-bar-pixel-3.png",
+                @".\images\player-green-mp-bar-pixel-4.png",
+                @".\images\player-green-mp-bar-pixel-5.png",
+                @".\images\player-green-mp-bar-pixel-6.png",
+                @".\images\player-green-mp-bar-pixel-7.png",
+                @".\images\player-green-mp-bar-pixel-8.png" };
 
             bool found = false;
-
-            for (int i = 0; i < redHPImages.Length; i++)
+            for (int i = 0; i < greenMpPixelImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "10", redHPImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", greenMpPixelImages[i]);
                 if (results == null)
                 {
                 }
@@ -1115,29 +1456,105 @@ namespace WindowsFormsApp2
                 }
             }
 
-            return found;
+            if (found == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool isPartyMemberRedHP(Rectangle rectangle)
+        {
+            string[] redHPImages = { @".\images\player-red-hp-bar-pixel.png",
+                @".\images\player-red-hp-bar-pixel2.png",
+                @".\images\player-red-hp-bar-pixel3.png",
+                @".\images\player-red-hp-bar-pixel4.png",
+                @".\images\player-red-hp-bar-pixel6.png",
+                @".\images\player-red-hp-bar-pixel8.png",
+                @".\images\player-red-hp-bar-pixel10.png" };
+
+            bool found = false;
+
+            for (int i = 0; i < redHPImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", redHPImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("Party member hp is red");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private bool isPartyMemberOrangeHP(Rectangle rectangle)
         {
-            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "13", @".\images\player-orange-hp-bar-pixel.png");
-            if (results == null)
+            string[] orangeHpImages = { @".\images\player-orange-hp-bar-pixel.png",
+                @".\images\player-orange-hp-bar-pixel2.png",
+                @".\images\player-orange-hp-bar-pixel3.png",
+                @".\images\player-orange-hp-bar-pixel4.png",
+                @".\images\player-orange-hp-bar-pixel5.png",
+                @".\images\player-orange-hp-bar-pixel6.png",
+                @".\images\player-orange-hp-bar-pixel7.png",
+                @".\images\player-orange-hp-bar-pixel8.png",
+                @".\images\player-orange-hp-bar-pixel9.png" };
+
+            bool found = false;
+
+            for (int i = 0; i < orangeHpImages.Length; i++)
             {
-                return false;
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", orangeHpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
         private bool isPartyMemberYellowHP(Rectangle rectangle)
         {
-            string[] yellowHpImages = { @".\images\player-yellow-hp-bar-pixel.png", @"/\images\player-yellow-hp-bar-pixel-2.png" };
+            string[] yellowHpImages = { @".\images\player-yellow-hp-bar-pixel.png",
+                @".\images\player-yellow-hp-bar-pixel-2.png",
+                @".\images\player-yellow-hp-bar-pixel-3.png",
+                @".\images\player-yellow-hp-bar-pixel-4.png",
+                @".\images\player-yellow-hp-bar-pixel-5.png",
+                @".\images\player-yellow-hp-bar-pixel-6.png",
+                @".\images\player-yellow-hp-bar-pixel-7.png",
+                @".\images\player-yellow-hp-bar-pixel-8.png",
+                @".\images\player-yellow-hp-bar-pixel-9.png",
+                @".\images\player-yellow-hp-bar-pixel-10.png",
+                @".\images\player-yellow-hp-bar-pixel-11.png" };
+
             bool found = false;
             for (int i = 0; i < yellowHpImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "7", yellowHpImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", yellowHpImages[i]);
                 if (results == null)
                 {
                 }
@@ -1159,13 +1576,14 @@ namespace WindowsFormsApp2
 
         private bool isPartyMemberDead(Rectangle rectangle)
         {
-            string[] partyMemberDeadImages = { @".\images\player_dead_2_not_targetted.png", @".\images\player_dead_2_targetted.png", @".\images\player_dead_2_not_targetted_2.png", @".\images\player_dead_2_targetted_2.png", @".\images\player_dead_3_not_targetted.png", @".\images\player_dead_3_targetted.png", @".\images\player_dead_3_not_targetted_2.png", @".\images\player_dead_3_targetted_2.png", @".\images\player_dead_4_not_targetted.png", @".\images\player_dead_4_targetted.png", @".\images\player_dead_5_not_targetted.png", @".\images\player_dead_5_targetted.png", @".\images\player_dead_6_not_targetted.png", @".\images\player_dead_6_targetted.png" };
+            string[] partyMemberDeadImages = { @".\images\player_dead_hp_bar.png", @".\images\player_dead_2_not_targetted.png", @".\images\player_dead_2_targetted.png", @".\images\player_dead_2_not_targetted_2.png", @".\images\player_dead_2_targetted_2.png", @".\images\player_dead_3_not_targetted.png", @".\images\player_dead_3_targetted.png", @".\images\player_dead_3_not_targetted_2.png", @".\images\player_dead_3_targetted_2.png", @".\images\player_dead_4_not_targetted.png", @".\images\player_dead_4_targetted.png", @".\images\player_dead_5_not_targetted.png", @".\images\player_dead_5_targetted.png", @".\images\player_dead_6_not_targetted.png", @".\images\player_dead_6_targetted.png" };
 
             bool found = false;
 
             for (int i = 0; i < partyMemberDeadImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "5", partyMemberDeadImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0" +
+                    "", partyMemberDeadImages[i]);
                 if (results == null)
                 {
                 }
@@ -1415,6 +1833,159 @@ namespace WindowsFormsApp2
             }
         }
 
+        void followTarget(int partyMember, int partySize, int waitTime)
+        {
+            string partyMemberString = "";
+            if (partySize == 6)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+                else if (partyMember == 2)
+                {
+                    partyMemberString = "<p1>";
+                }
+                else if (partyMember == 3)
+                {
+                    partyMemberString = "<p2>";
+                }
+                else if (partyMember == 4)
+                {
+                    partyMemberString = "<p3>";
+                }
+                else if (partyMember == 5)
+                {
+                    partyMemberString = "<p4>";
+                }
+                else if (partyMember == 6)
+                {
+                    partyMemberString = "<p5>";
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (partySize == 5)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+                else if (partyMember == 2)
+                {
+                    partyMemberString = "<p1>";
+                }
+                else if (partyMember == 3)
+                {
+                    partyMemberString = "<p2>";
+                }
+                else if (partyMember == 4)
+                {
+                    partyMemberString = "<p3>";
+                }
+                else if (partyMember == 5)
+                {
+                    partyMemberString = "<p4>";
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (partySize == 4)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+                else if (partyMember == 2)
+                {
+                    partyMemberString = "<p1>";
+                }
+                else if (partyMember == 3)
+                {
+                    partyMemberString = "<p2>";
+                }
+                else if (partyMember == 4)
+                {
+                    partyMemberString = "<p3>";
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (partySize == 3)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+                else if (partyMember == 2)
+                {
+                    partyMemberString = "<p1>";
+                }
+                else if (partyMember == 3)
+                {
+                    partyMemberString = "<p2>";
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (partySize == 2)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+                else if (partyMember == 2)
+                {
+                    partyMemberString = "<p1>";
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (partySize == 1)
+            {
+                if (partyMember == 1)
+                {
+                    partyMemberString = "<p0>";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            if (followQueue.Count > 0)
+            {
+                followQueue.Dequeue();
+                followPartyMember2Queue.Enqueue(true);
+                AutoItX.Send("/follow " + partyMemberString);
+                Thread.Sleep(waitTime);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
+            }
+            else if (followPartyMember2Queue.Count == 0)
+            {
+                followPartyMember2Queue.Enqueue(true);
+                AutoItX.Send("/follow " + partyMemberString);
+                Thread.Sleep(waitTime);
+                AutoItX.Send("{Enter}");
+                Thread.Sleep(100);
+            }
+            else
+            {
+                // Do nothing because I'm already following the party member
+            }
+        }
+
         bool isStoneskinActive()
         {
 
@@ -1510,7 +2081,7 @@ namespace WindowsFormsApp2
 
             for (int i = 0; i < hasteSambaImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "10", hasteSambaImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", hasteSambaImages[i]);
                 if (results == null)
                 {
                 }
@@ -1881,7 +2452,36 @@ namespace WindowsFormsApp2
 
         public bool isEngaged(Rectangle rectangle)
         {
-            string[] assistImages = { @".\images\engaged_monster_name_pixel.png", @".\images\engaged_monster_name_pixel3.png", @".\images\engaged_monster_name_pixel4.png", @".\images\engaged_monster_name_pixel5.png", @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
+            string[] assistImages = { @".\images\engaged_monster_name_pixel.png" };
+
+            bool found = false;
+            for (int i = 0; i < assistImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", assistImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("I am targeting an engaged monster to fight");
+                return true;
+            }
+            else
+            {
+                appendText("I am not targeting a engaged monster to fight");
+                return false;
+            }
+        }
+
+        public bool isTargettingAMonster(Rectangle rectangle)
+        {
+            string[] assistImages = { @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
 
             bool found = false;
             for (int i = 0; i < assistImages.Length; i++)
@@ -1919,7 +2519,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Fast Blade\" <t>");
                 Thread.Sleep(1000);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Burning Blade")
             {
@@ -1927,7 +2527,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Burning Blade\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Red Lotus Blade")
             {
@@ -1937,7 +2537,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Red Lotus Blade\" <t>");
                 Thread.Sleep(1000);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Wasp Sting")
             {
@@ -1945,7 +2545,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Wasp Sting\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Shining Blade")
             {
@@ -1953,7 +2553,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Shining Blade\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Seraph Blade")
             {
@@ -1961,7 +2561,6 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Seraph Blade\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
             }
             else if (weaponskill == "Vorpal Blade")
             {
@@ -1971,7 +2570,7 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Vorpal Blade\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Flat Blade")
             {
@@ -1979,47 +2578,485 @@ namespace WindowsFormsApp2
                 AutoItX.Send("/ws \"Flat Blade\" <t>");
                 Thread.Sleep(delay);
                 AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (weaponskill == "Circle Blade")
             {
                 appendText("Using circle blade...");
                 AutoItX.Send("/ws \"Circle Blade\" <t>");
-                Thread.Sleep(delay);
-                AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willCircleBladeMakeLevel2Fragmentation() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling circle blade");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willCircleBladeMakeLevel2Fragmentation() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            appendText2("Cancelling circle blade");
+                        }
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling circle blade - no skillchain with cicle blade is possible");
+                    }
+                }
             }
             else if (weaponskill == "Savage Blade")
             {
                 appendText("Using savage blade...");
                 AutoItX.Send("/ws \"Savage Blade\" <t>");
-                Thread.Sleep(delay);
-                AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willSavageBladeMakeLevel3Light() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling savage blade");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willSavageBladeMakeLevel3Light() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            appendText2("Cancelling savage blade");
+                        }
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling savage blade - no skillchain with savage blade is possible");
+                    }
+                }
             }
             else if (weaponskill == "Requiescat")
             {
                 appendText("Using requiescat...");
                 AutoItX.Send("/ws \"Requiescat\" <t>");
-                Thread.Sleep(delay);
-                AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willRequiescatMakeLevel3Darkness() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling requiescat");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willRequiescatMakeLevel3Darkness() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            appendText2("Cancelling requiescat");
+                        }
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling requiescat - no skillchain with requiescat is possible");
+                    }
+                }
             }
             else if (weaponskill == "Knights of Round")
             {
                 appendText("Using knights of round...");
                 AutoItX.Send("/ws \"Knights of Round\" <t>");
-                Thread.Sleep(delay);
-                AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+
+                //if (canIUseNextWeaponskillInLessThan6Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 4 3/4 second");
+                //    Thread.Sleep(4750);
+                //}
+                //else if (canIUseNextWeaponskillInLessThan5Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 3 3/4 second");
+                //    Thread.Sleep(3750);
+                //}
+                //else if (canIUseNextWeaponskillInLessThan4Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 2 3/4 second");
+                //    Thread.Sleep(2750);
+                //}
+                //else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 1 3/4 second");
+                //    Thread.Sleep(1750);
+                //}
+                //else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 3/4 second");
+                //    Thread.Sleep(750);
+                //}
+                //else if (canIUseNextWeaponskillInLessThan1Second() == true)
+                //{
+                //    appendText2("*** SLEEPING FOR 0 second");
+                //    Thread.Sleep(0);
+                //}
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willKnightsOfRoundMakeLevel4Light() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else if (willKnightsOfRoundMakeLevel3Light() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling knights of round");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willKnightsOfRoundMakeLevel4Light() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else if (willKnightsOfRoundMakeLevel3Light() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            appendText2("Cancelling knights of round");
+                        }
+
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling knights of round - no skillchain with knights of round is possible");
+                    }
+                }
+                
+                //if (canIUseNextWeaponskill() == true)
+                //{
+                //    if (willKnightsOfRoundMakeLevel4Light() == true)
+                //    {
+                //        AutoItX.Send("{Enter}");
+                //        Thread.Sleep(2000);
+                //    }
+                //    else if (willKnightsOfRoundMakeLevel3Light() == true)
+                //    {
+                //        AutoItX.Send("{Enter}");
+                //        Thread.Sleep(2000);
+                //    }
+                //    else
+                //    {
+                //        AutoItX.Send("{ESC}");
+                //        Thread.Sleep(delay);
+                //        AutoItX.Send("{ESC}");
+                //        Thread.Sleep(delay);
+                //        appendText2("Cancelling knights of round - no skillchain with knights of round is possible");
+                //    }
+                //}
+                //else if (isSkillchainActive() == false)
+                //{
+                //    AutoItX.Send("{Enter}");
+                //    Thread.Sleep(2000);
+                //}
+                //else
+                //{
+                //    AutoItX.Send("{ESC}");
+                //    Thread.Sleep(delay);
+                //    AutoItX.Send("{ESC}");
+                //    Thread.Sleep(delay);
+                //    appendText2("Cancelling knights of round");
+                //}
             }
             else if (weaponskill == "Chant du Cygne")
             {
                 appendText("Using chant du cygne...");
                 AutoItX.Send("/ws \"Chant du Cygne\" <t>");
-                Thread.Sleep(delay);
-                AutoItX.Send("{Enter}");
-                Thread.Sleep(2000);
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willChantDuCygneMakeLevel3Darkness() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling chant du cygne");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willChantDuCygneMakeLevel3Darkness() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            appendText2("Cancelling chant du cygne");
+                        }
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling chant du cygne - no skillchain with chant du cygne is possible");
+                    }
+                }
+            }
+            else if (weaponskill == "Death Blossom")
+            {
+                appendText("Using death blossom...");
+                AutoItX.Send("/ws \"Death Blossom\" <t>");
+
+                if (canIUseNextWeaponskill() == true)
+                {
+                    if (willDeathBlossomMakeLevel3Light() == true)
+                    {
+                        AutoItX.Send("{Enter}");
+                    }
+                    else
+                    {
+                        appendText2("TODO: DEATH BLOSSOM");
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling death blossom");
+                    }
+                }
+                else if (isSkillchainActive() == false)
+                {
+                    AutoItX.Send("{Enter}");
+                }
+                else 
+                {
+                    if (canIUseNextWeaponskillInLessThan1Second() == true)
+                    {
+                        appendText("*** SLEEPING FOR 1 second");
+                        Thread.Sleep(1000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan2Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 2 second");
+                        Thread.Sleep(2000);
+                    }
+                    else if (canIUseNextWeaponskillInLessThan3Second() == true)
+                    {
+                        appendText2("*** SLEEPING FOR 3 second");
+                        Thread.Sleep(3000);
+                    }
+
+                    if (canIUseNextWeaponskill() == true)
+                    {
+                        if (willDeathBlossomMakeLevel3Light() == true)
+                        {
+                            AutoItX.Send("{Enter}");
+                        }
+                        else
+                        {
+                            appendText2("Cancelling death blossom");
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                            AutoItX.Send("{ESC}");
+                            Thread.Sleep(delay);
+                        }
+                    }
+                    else
+                    {
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        AutoItX.Send("{ESC}");
+                        Thread.Sleep(delay);
+                        appendText2("Cancelling death blossom - no skillchain with death blossom is possible");
+                    }
+                }
             }
             else if (weaponskill == "Gust Slash")
             {
@@ -2244,210 +3281,578 @@ namespace WindowsFormsApp2
             return rectangle;
         }
 
+        bool isHpLow()
+        {
+            string[] myHPImages = { @".\images\self-pink-hp-pixel.png", @".\images\self-pink-hp-pixel-2.png" };
+
+            Rectangle rectangle = new Rectangle(90, 75, 110, 85);
+            bool found = false;
+
+            for (int i = 0; i < myHPImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", myHPImages[i]);
+                if (results == null)
+                {
+
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         bool isMPLow(int partyMember, int partySize)
         {
-            int left = 0;
-            int top = 0;
-            int right = 0;
-            int bottom = 0;
-            if (partySize == 6)
+            string[] mpPixelImages = { @".\images\self-pink-mp-pixel.png", @".\images\self-pink-mp-pixel-2.png" };
+
+            Rectangle rectangle = new Rectangle(55, 83, 110, 94);
+            bool found = false;
+            for (int i = 0; i < mpPixelImages.Length; i++)
             {
-                if (partyMember == 1)
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", mpPixelImages[i]);
+                if (results == null)
                 {
-                    left = 1300;
-                    top = 605;
-                    right = 1350;
-                    bottom = 625;
-                }
-                else if (partyMember == 2)
-                {
-                    left = 1300;
-                    top = 630;
-                    right = 1350;
-                    bottom = 640;
-                }
-                else if (partyMember == 3)
-                {
-                    left = 1300;
-                    top = 650;
-                    right = 1350;
-                    bottom = 660;
-                }
-                else if (partyMember == 4)
-                {
-                    left = 1300;
-                    top = 668;
-                    right = 1350;
-                    bottom = 678;
-                }
-                else if (partyMember == 5)
-                {
-                    left = 1300;
-                    top = 685;
-                    right = 1350;
-                    bottom = 695;
-                }
-                else if (partyMember == 6)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
                 }
                 else
                 {
-                    return false;
+                    found = true;
                 }
             }
-            else if (partySize == 5)
+
+            if (found == true)
             {
-                if (partyMember == 1)
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        bool isSkillchainActive()
+        {
+            string[] skillchainImages = { @".\images\windower_skillchain_background.png" };
+
+            Rectangle rectangle = new Rectangle(135, 355, 485, 445);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainImages[0]);
+            if (results == null)
+            {
+                appendText("Skillchain is not active");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        bool canIUseNextWeaponskill()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go.png", 
+                @".\images\windower_skillchain_go_2.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 165, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
                 {
-                    left = 1300;
-                    top = 630;
-                    right = 1350;
-                    bottom = 640;
-                }
-                else if (partyMember == 2)
-                {
-                    left = 1300;
-                    top = 650;
-                    right = 1350;
-                    bottom = 660;
-                }
-                else if (partyMember == 3)
-                {
-                    left = 1300;
-                    top = 668;
-                    right = 1350;
-                    bottom = 678;
-                }
-                else if (partyMember == 4)
-                {
-                    left = 1300;
-                    top = 685;
-                    right = 1350;
-                    bottom = 695;
-                }
-                else if (partyMember == 5)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
                 }
                 else
                 {
-                    return false;
+                    found = true;
+                    break;
                 }
             }
-            else if (partySize == 4)
+
+            if (found == true)
             {
-                if (partyMember == 1)
+                appendText2("CLASS1: I can use next weaponskill");
+                return true;
+            }
+            else
+            {
+                appendText2("CLASS1: I cannot use next weaponskill");
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan1Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_3.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
                 {
-                    left = 1300;
-                    top = 650;
-                    right = 1350;
-                    bottom = 660;
-                }
-                else if (partyMember == 2)
-                {
-                    left = 1300;
-                    top = 668;
-                    right = 1350;
-                    bottom = 678;
-                }
-                else if (partyMember == 3)
-                {
-                    left = 1300;
-                    top = 685;
-                    right = 1350;
-                    bottom = 695;
-                }
-                else if (partyMember == 4)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
                 }
                 else
                 {
-                    return false;
+                    found = true;
+                    break;
                 }
             }
-            else if (partySize == 3)
+
+            if (found == true)
             {
-                if (partyMember == 1)
-                {
-                    left = 1300;
-                    top = 668;
-                    right = 1350;
-                    bottom = 678;
-                }
-                else if (partyMember == 2)
-                {
-                    left = 1300;
-                    top = 685;
-                    right = 1350;
-                    bottom = 695;
-                }
-                else if (partyMember == 3)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else if (partySize == 2)
-            {
-                if (partyMember == 1)
-                {
-                    left = 1300;
-                    top = 685;
-                    right = 1350;
-                    bottom = 695;
-                }
-                else if (partyMember == 2)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else if (partySize == 1)
-            {
-                if (partyMember == 1)
-                {
-                    left = 1300;
-                    top = 705;
-                    right = 1350;
-                    bottom = 713;
-                }
-                else
-                {
-                    return false;
-                }
+                appendText2("*** USING WEAPONSKILL IN 1 SECONDS");
+                return true;
             }
             else
             {
                 return false;
             }
+        }
 
-            string[] mpPixelImages = { @".\images\player-green-mp-bar-pixel.png" };
+        bool canIUseNextWeaponskillInLessThan2Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_4.png" };
 
-            string[] results = UseImageSearch(left, top, right, bottom, "30", mpPixelImages[0]);
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("*** USING WEAPONSKILL IN 2 SECONDS");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan3Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_5.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("*** USING WEAPONSKILL IN 3 SECONDS");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan4Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_6.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("*** USING WEAPONSKILL IN 4 SECONDS");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan5Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_7.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("*** USING WEAPONSKILL IN 5 seconds");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan6Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_8.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("CLASS1: I can use next weaponskill in less than 6 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willDeathBlossomMakeLevel3Light()
+        {
+            string[] skillchainDeathBlossomImages = { @".\images\windower_skillchain_death_blossom_level_3_light.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            bool found = false;
+
+            for (int i = 0; i < skillchainDeathBlossomImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainDeathBlossomImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("****CLASS1: Level 3 light is possible - Death Blossom****");
+                return true;
+            }
+            else
+            {
+                appendText2("****CLASS1: Level 3 light is not possible - Death Blossom ****");
+                return false;
+            }
+        }
+
+        bool willKnightsOfRoundMakeLevel4Light()
+        {
+            string[] skillchainKnightsOfRoundImages = { @".\images\windower_skillchain_knights_of_round_level_4_light_2.png" };
+
+            Rectangle rectangle = new Rectangle(130, 350, 490, 530);
+            bool found = false;
+
+            for (int i = 0; i < skillchainKnightsOfRoundImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainKnightsOfRoundImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("****CLASS 1: Level 4 light is possible - Knights of Round****");
+                return true;
+            }
+            else
+            {
+                appendText("****CLASS 1: Level 4 light is not possible - Knights of Round****");
+                return false;
+            }
+
+
+        }
+
+        bool willKnightsOfRoundMakeLevel3Light()
+        {
+            string[] skillchainKnightsOfRoundImages = { @".\images\windower_skillchain_knights_of_round_level_3_light.png", 
+                @".\images\windower_skillchain_knights_of_round_level_3_light_2.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            bool found = false;
+
+            for (int i = 0; i < skillchainKnightsOfRoundImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainKnightsOfRoundImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("****CLASS1: Level 3 light is possible - Knights of Round***");
+                return true;
+            }
+            else
+            {
+                appendText2("****CLASS1: Level 3 light is NOT possible - Knights of Round***");
+                return false;
+            }
+        }
+
+        bool willSavageBladeMakeLevel3Light()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_savage_blade_level_3_light.png", 
+                @".\images\windower_skillchain_savage_blade_level_3_light_3.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            for (int i = 0; i < windowerSkillchainImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", windowerSkillchainImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("****CLASS1: Level 3 light is possible - Savage Blade****");
+                return true;
+            }
+            else
+            {
+                appendText2("****CLASS1: Level 3 light is not possible - Savage Blade****");
+                return false;
+            }
+        }
+
+        bool willChantDuCygneMakeLevel3Darkness()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_chant_du_cygne_level_3_darkness.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+
+            bool found = false;
+
+            for (int i = 0; i < windowerSkillchainImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", windowerSkillchainImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("***CLASS1: Level 3 darkness is possible - Chant du Cygne***");
+                return true;
+            }
+            else
+            {
+                appendText2("***CLASS1: Level 3 darkness is not possible - Chant du Cygne***");
+                return false;
+            }
+        }
+
+        bool willRequiescatMakeLevel3Darkness()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_requiescat_level_3_darkness.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", windowerSkillchainImages[0]);
             if (results == null)
+            {
+                return false;
+            }
+            else
+            {
+                appendText("***Level 3 darkness is possible - Requiescat    ***");
+                return true;
+            }
+        }
+
+        bool willCircleBladeMakeLevel2Fragmentation()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_circle_blade_level_2_fragmentation.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", windowerSkillchainImages[0]);
+            if (results == null)
+            {
+                return false;
+            }
+            else
+            {
+                appendText("***Level 2 fragmentation is possible - CIRCLE BLADE    ***");
+                return true;
+            }
+        }
+
+        bool almostHasTP()
+        {
+            string[] tpImages = { @".\images\tp_text_700.png", @".\images\tp_text_800.png", @".\images\tp_text_900.png" };
+
+            bool found = false;
+            for (int i = 0; i < tpImages.Length; i++)
+            {
+                string[] results = UseImageSearch(116, 90, 130, 110, "3", tpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("CLASS1: I almost have TP");
+                return true;
+            }
+            else
+            {
+                appendText2("CLASS1: I do not almost have TP");
+                return false;
+            }
+        }
+
+        bool hasTP()
+        {
+            string[] tpImages = { @".\images\tp_text_1000.png", @".\images\tp_text_2000.png", @".\images\tp_text_3000.png" };
+
+            bool found = false;
+            for (int i = 0; i < tpImages.Length; i++)
+            {
+                string[] results = UseImageSearch(110, 90, 120, 110, "3", tpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("I have TP");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool isHPToppedOff(Rectangle rectangle)
+        {
+            string[] hpPixelImages = { @".\images\pink-hp-pixel.png",
+                @".\images\pink-hp-pixel-2.png",
+                @".\images\pink-hp-pixel-3.png",
+                @".\images\pink-hp-pixel-4.png" };
+
+            bool found = false;
+
+            for (int i = 0; i < hpPixelImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", hpPixelImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
             {
                 return true;
             }
@@ -2457,6 +3862,7 @@ namespace WindowsFormsApp2
             }
         }
 
+
         private void appendText(string s)
         {
             control.BeginInvoke((MethodInvoker)delegate ()
@@ -2464,6 +3870,16 @@ namespace WindowsFormsApp2
                 DateTime timestamp = DateTime.Now;
                 textBox1.AppendText(timestamp.ToString() + " " + s);
                 textBox1.AppendText(Environment.NewLine);
+            });
+        }
+
+        private void appendText2(string s)
+        {
+            control.BeginInvoke((MethodInvoker)delegate ()
+            {
+                DateTime timestamp = DateTime.Now;
+                textBox2.AppendText(timestamp.ToString() + " " + s);
+                textBox2.AppendText(Environment.NewLine);
             });
         }
     }

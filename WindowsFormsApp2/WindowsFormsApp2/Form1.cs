@@ -886,42 +886,42 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 595;
                     width = 1340;
                     height = 610;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 6)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -935,35 +935,35 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -977,28 +977,28 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1012,21 +1012,21 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
-                    height = 670;
+                    height = 665;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1040,14 +1040,14 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1061,7 +1061,7 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1076,12 +1076,21 @@ namespace WindowsFormsApp2
                 return false;
             }
 
-            string[] redHPImages = { @".\images\player-red-hp-bar-pixel.png", @".\images\player-red-hp-bar-pixel2.png", @".\images\player-red-hp-bar-pixel3.png" };
+            string[] redHPImages = { @".\images\player-red-hp-bar-pixel.png", 
+                @".\images\player-red-hp-bar-pixel2.png", 
+                @".\images\player-red-hp-bar-pixel3.png", 
+                @".\images\player-red-hp-bar-pixel4.png",
+                @".\images\player-red-hp-bar-pixel5.png",
+                @".\images\player-red-hp-bar-pixel6.png",
+                @".\images\player-red-hp-bar-pixel7.png",
+                @".\images\player-red-hp-bar-pixel8.png",
+                @".\images\player-red-hp-bar-pixel9.png",
+                @".\images\player-red-hp-bar-pixel10.png" };
 
             bool found = false;
 
             for (int i = 0; i < redHPImages.Length; i++) {
-                string[] results = UseImageSearch(x, y, width, height, "10", redHPImages[i]);
+                string[] results = UseImageSearch(x, y, width, height, "0", redHPImages[i]);
                 if (results == null)
                 {
                 }
@@ -1104,42 +1113,42 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 595;
                     width = 1340;
                     height = 610;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
-                    y = 67;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 6)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1153,35 +1162,35 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1195,28 +1204,28 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1230,21 +1239,21 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 665;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1258,14 +1267,14 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
-                    y = 672;
+                    x = 1290;
+                    y = 670;
                     width = 1340;
-                    height = 687;
+                    height = 685;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1279,7 +1288,7 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1294,14 +1303,37 @@ namespace WindowsFormsApp2
                 return false;
             }
 
-            string[] results = UseImageSearch(x, y, width, height, "13", @".\images\player-orange-hp-bar-pixel.png");
-            if (results == null)
+            string[] orangeHpImages = { @".\images\player-orange-hp-bar-pixel.png",
+                @".\images\player-orange-hp-bar-pixel2.png",
+                @".\images\player-orange-hp-bar-pixel3.png",
+                @".\images\player-orange-hp-bar-pixel4.png",
+                @".\images\player-orange-hp-bar-pixel5.png",
+                @".\images\player-orange-hp-bar-pixel6.png",
+                @".\images\player-orange-hp-bar-pixel7.png",
+                @".\images\player-orange-hp-bar-pixel8.png",
+                @".\images\player-orange-hp-bar-pixel9.png" };
+
+            bool found = false;
+
+            for (int i = 0; i < orangeHpImages.Length; i++)
             {
-                return false;
+                string[] results = UseImageSearch(x, y, width, height, "0", orangeHpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -1315,42 +1347,42 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 595;
                     width = 1340;
                     height = 610;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 670;
                     width = 1340;
                     height = 685;
                 }
                 else if (partyMember == 6)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1364,35 +1396,35 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 615;
                     width = 1340;
                     height = 630;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 670;
                     width = 1340;
                     height = 685;
                 }
                 else if (partyMember == 5)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1406,28 +1438,28 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 635;
                     width = 1340;
                     height = 650;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 670;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 670;
                     width = 1340;
                     height = 685;
                 }
                 else if (partyMember == 4)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1441,21 +1473,21 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 655;
                     width = 1340;
                     height = 665;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 670;
                     width = 1340;
                     height = 685;
                 }
                 else if (partyMember == 3)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1469,14 +1501,14 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 670;
                     width = 1340;
                     height = 685;
                 }
                 else if (partyMember == 2)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1490,7 +1522,7 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    x = 1310;
+                    x = 1290;
                     y = 690;
                     width = 1340;
                     height = 705;
@@ -1505,12 +1537,22 @@ namespace WindowsFormsApp2
                 return false;
             }
 
-            string[] yellowHpImages = { @".\images\player-yellow-hp-bar-pixel.png", @"/\images\player-yellow-hp-bar-pixel-2.png" };
+            string[] yellowHpImages = { @".\images\player-yellow-hp-bar-pixel.png", 
+                @".\images\player-yellow-hp-bar-pixel-2.png", 
+                @".\images\player-yellow-hp-bar-pixel-3.png",
+                @".\images\player-yellow-hp-bar-pixel-4.png",
+                @".\images\player-yellow-hp-bar-pixel-5.png",
+                @".\images\player-yellow-hp-bar-pixel-6.png",
+                @".\images\player-yellow-hp-bar-pixel-7.png",
+                @".\images\player-yellow-hp-bar-pixel-8.png",
+                @".\images\player-yellow-hp-bar-pixel-9.png",
+                @".\images\player-yellow-hp-bar-pixel-10.png",
+                @".\images\player-yellow-hp-bar-pixel-11.png" };
 
             bool found = false;
             for (int i = 0; i < yellowHpImages.Length; i++)
             {
-                string[] results = UseImageSearch(x, y, width, height, "7", yellowHpImages[i]);
+                string[] results = UseImageSearch(x, y, width, height, "0", yellowHpImages[i]);
                 if (results == null)
                 {
                 }
@@ -1526,21 +1568,52 @@ namespace WindowsFormsApp2
             }
             else
             {
+                appendText("********** Party member " + partyMember + " is in yellow hp ********");
                 return true;
             }
             
+        }
+
+        bool isHpLow()
+        {
+            string[] myHPImages = { @".\images\self-pink-hp-pixel.png", @".\images\self-pink-hp-pixel-2.png" };
+
+            Rectangle rectangle = new Rectangle(90, 75, 110, 85);
+            bool found = false;
+
+            for (int i = 0; i < myHPImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", myHPImages[i]);
+                if (results == null)
+                {
+
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         bool isPartyMemberDead(int partyMember, int partySize)
         {
             Rectangle rectangle = getPartyMemberDeadRectangle(partyMember, partySize);
 
-            string[] partyMemberDeadImages = { @".\images\player_dead_2_not_targetted.png", @".\images\player_dead_2_targetted.png", @".\images\player_dead_2_not_targetted_2.png", @".\images\player_dead_2_targetted_2.png", @".\images\player_dead_3_not_targetted.png", @".\images\player_dead_3_targetted.png", @".\images\player_dead_3_not_targetted_2.png", @".\images\player_dead_3_targetted_2.png", @".\images\player_dead_4_not_targetted.png", @".\images\player_dead_4_targetted.png", @".\images\player_dead_5_not_targetted.png", @".\images\player_dead_5_targetted.png", @".\images\player_dead_6_not_targetted.png", @".\images\player_dead_6_targetted.png" };
+            string[] partyMemberDeadImages = { @".\images\player_dead_hp_bar.png", @".\images\player_dead_2_not_targetted.png", @".\images\player_dead_2_targetted.png", @".\images\player_dead_2_not_targetted_2.png", @".\images\player_dead_2_targetted_2.png", @".\images\player_dead_3_not_targetted.png", @".\images\player_dead_3_targetted.png", @".\images\player_dead_3_not_targetted_2.png", @".\images\player_dead_3_targetted_2.png", @".\images\player_dead_4_not_targetted.png", @".\images\player_dead_4_targetted.png", @".\images\player_dead_5_not_targetted.png", @".\images\player_dead_5_targetted.png", @".\images\player_dead_6_not_targetted.png", @".\images\player_dead_6_targetted.png" };
 
             bool found = false;
             for (int i = 0; i < partyMemberDeadImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "10", partyMemberDeadImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", partyMemberDeadImages[i]);
                 if (results == null)
                 {
                 }
@@ -2101,8 +2174,58 @@ namespace WindowsFormsApp2
                 return false;
             }
 
-            string[] results = UseImageSearch(left, top, right, bottom, "30", @".\images\player-green-mp-bar-pixel.png");
-            if (results == null)
+            string[] greenMpPixelImages = { @".\images\player-green-mp-bar-pixel.png",
+                @".\images\player-green-mp-bar-pixel-2.png",
+                @".\images\player-green-mp-bar-pixel-3.png",
+                @".\images\player-green-mp-bar-pixel-4.png",
+                @".\images\player-green-mp-bar-pixel-5.png",
+                @".\images\player-green-mp-bar-pixel-6.png",
+                @".\images\player-green-mp-bar-pixel-7.png",
+                @".\images\player-green-mp-bar-pixel-8.png" };
+
+            bool found = false;
+            for (int i = 0; i < greenMpPixelImages.Length; i++)
+            {
+                string[] results = UseImageSearch(left, top, right, bottom, "3", greenMpPixelImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return true;
+            }
+            else
+            {
+                appendText("***** PARTY MEMBER MP IS NOT TOPPED OFF ********");
+                return false;
+            }
+        }
+
+        bool isMPLow(int partyMember, int partySize)
+        {
+            string[] mpPixelImages = { @".\images\self-pink-mp-pixel.png", @".\images\self-pink-mp-pixel-2.png" };
+            
+            Rectangle rectangle = new Rectangle(55, 83, 110, 94);
+            bool found = false;
+            for (int i = 0; i < mpPixelImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", mpPixelImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
             {
                 return false;
             }
@@ -2112,7 +2235,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        bool isMPLow(int partyMember, int partySize)
+        bool isMPLow2(int partyMember, int partySize)
         {
             int left = 0;
             int top = 0;
@@ -2122,42 +2245,42 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 605;
                     right = 1350;
                     bottom = 625;
                 }
                 else if (partyMember == 2)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 630;
                     right = 1350;
                     bottom = 640;
                 }
                 else if (partyMember == 3)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 650;
                     right = 1350;
                     bottom = 660;
                 }
                 else if (partyMember == 4)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 668;
                     right = 1350;
                     bottom = 678;
                 }
                 else if (partyMember == 5)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 685;
                     right = 1350;
                     bottom = 695;
                 }
                 else if (partyMember == 6)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2171,35 +2294,35 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 630;
                     right = 1350;
                     bottom = 640;
                 }
                 else if (partyMember == 2)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 650;
                     right = 1350;
                     bottom = 660;
                 }
                 else if (partyMember == 3)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 668;
                     right = 1350;
                     bottom = 678;
                 }
                 else if (partyMember == 4)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 685;
                     right = 1350;
                     bottom = 695;
                 }
                 else if (partyMember == 5)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2213,28 +2336,28 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 650;
                     right = 1350;
                     bottom = 660;
                 }
                 else if (partyMember == 2)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 668;
                     right = 1350;
                     bottom = 678;
                 }
                 else if (partyMember == 3)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 685;
                     right = 1350;
                     bottom = 695;
                 }
                 else if (partyMember == 4)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2248,21 +2371,21 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 668;
                     right = 1350;
                     bottom = 678;
                 }
                 else if (partyMember == 2)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 685;
                     right = 1350;
                     bottom = 695;
                 }
                 else if (partyMember == 3)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2276,14 +2399,14 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
-                    top = 685;
+                    left = 1295;
+                    top = 680;
                     right = 1350;
                     bottom = 695;
                 }
                 else if (partyMember == 2)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2297,7 +2420,7 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    left = 1300;
+                    left = 1295;
                     top = 705;
                     right = 1350;
                     bottom = 713;
@@ -2312,15 +2435,266 @@ namespace WindowsFormsApp2
                 return false;
             }
 
-            string[] mpPixelImages = { @".\images\player-green-mp-bar-pixel.png" };
+            string[] mpPixelImages = { @".\images\player-green-mp-bar-pixel.png",
+                @".\images\player-green-mp-bar-pixel-2.png",
+                @".\images\player-green-mp-bar-pixel-3.png",
+                @".\images\player-green-mp-bar-pixel-4.png",
+                @".\images\player-green-mp-bar-pixel-5.png",
+                @".\images\player-green-mp-bar-pixel-6.png",
+                @".\images\player-green-mp-bar-pixel-7.png",
+                @".\images\player-green-mp-bar-pixel-8.png" };
 
-            string[] results = UseImageSearch(left, top, right, bottom, "30", mpPixelImages[0]);
-            if (results == null)
+            bool found = false;
+
+            for (int i = 0; i < mpPixelImages.Length; i++)
+            {
+                string[] results = UseImageSearch(left, top, right, bottom, "3", mpPixelImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        bool isHPToppedOff(int partyMember, int partySize)
+        {
+            int left = 0;
+            int top = 0;
+            int right = 0;
+            int bottom = 0;
+            if (partySize == 6)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 600;
+                    right = 1350;
+                    bottom = 610;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1326;
+                    top = 617;
+                    right = 1350;
+                    bottom = 627;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1326;
+                    top = 634;
+                    right = 1350;
+                    bottom = 644;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1326;
+                    top = 655;
+                    right = 1350;
+                    bottom = 665;
+                }
+                else if (partyMember == 5)
+                {
+                    left = 1326;
+                    top = 672;
+                    right = 1350;
+                    bottom = 682;
+                }
+                else if (partyMember == 6)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 5)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 617;
+                    right = 1350;
+                    bottom = 627;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1326;
+                    top = 634;
+                    right = 1350;
+                    bottom = 644;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1326;
+                    top = 655;
+                    right = 1350;
+                    bottom = 665;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1326;
+                    top = 672;
+                    right = 1350;
+                    bottom = 682;
+                }
+                else if (partyMember == 5)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 4)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 634;
+                    right = 1350;
+                    bottom = 644;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1326;
+                    top = 655;
+                    right = 1350;
+                    bottom = 665;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1326;
+                    top = 672;
+                    right = 1350;
+                    bottom = 682;
+                }
+                else if (partyMember == 4)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 3)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 655;
+                    right = 1350;
+                    bottom = 665;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1326;
+                    top = 672;
+                    right = 1350;
+                    bottom = 682;
+                }
+                else if (partyMember == 3)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 2)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 672;
+                    right = 1350;
+                    bottom = 682;
+                }
+                else if (partyMember == 2)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (partySize == 1)
+            {
+                if (partyMember == 1)
+                {
+                    left = 1326;
+                    top = 692;
+                    right = 1350;
+                    bottom = 702;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            string[] hpPixelImages = { @".\images\pink-hp-pixel.png",
+                @".\images\pink-hp-pixel-2.png",
+                @".\images\pink-hp-pixel-3.png",
+                @".\images\pink-hp-pixel-4.png"};
+
+            bool found = false;
+
+            for (int i = 0; i < hpPixelImages.Length; i++)
+            {
+                string[] results = UseImageSearch(left, top, right, bottom, "3", hpPixelImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
             {
                 return true;
             }
             else
             {
+                appendText("HP IS NOT TOPPED OFF FOR PARTY MEMBER " + partyMember);
                 return false;
             }
         }
@@ -2486,6 +2860,432 @@ namespace WindowsFormsApp2
             }
         }
 
+        bool isSkillchainActive()
+        {
+            string[] skillchainImages = { @".\images\windower_skillchain_background.png" };
+
+            Rectangle rectangle = new Rectangle(135, 355, 485, 445);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainImages[0]);
+            if (results == null)
+            {
+                return false;
+            }
+            else
+            {
+                appendText2("Skillchain is active");
+                return true;
+            }
+        }
+
+        bool canIUseNextWeaponskill()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go.png", 
+                @".\images\windower_skillchain_go_2.png"};
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 490, 530);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan1Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_3.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 1 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan2Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_4.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 2 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan3Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_5.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 3 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan4Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_6.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 4 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan5Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_7.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 5 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool canIUseNextWeaponskillInLessThan6Second()
+        {
+            string[] skillchainGoImages = { @".\images\windower_skillchain_go_8.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 350, 205, 380);
+
+            for (int i = 0; i < skillchainGoImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainGoImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I can use next weaponskill in less than 6 second");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willDeathBlossomMakeLevel3Light()
+        {
+            string[] skillchainDeathBlossomImages = { @".\images\windower_skillchain_death_blossom_level_3_light.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            bool found = false;
+
+            for (int i = 0; i < skillchainDeathBlossomImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainDeathBlossomImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("****Level 3 light is possible - Death Blossom****");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willKnightsOfRoundMakeLevel4Light()
+        {
+            string[] skillchainKnightsOfRoundImages = { @".\images\windower_skillchain_knights_of_round_level_4_light_2.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            bool found = false;
+
+            for (int i = 0; i < skillchainKnightsOfRoundImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainKnightsOfRoundImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (found == true)
+            {
+                appendText("****Level 4 light is possible - Knights of Round****");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willKnightsOfRoundMakeLevel3Light()
+        {
+            string[] skillchainKnightsOfRoundImages = { @".\images\windower_skillchain_knights_of_round_level_3_light.png", 
+                @".\images\windower_skillchain_knights_of_round_level_3_light_2.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            bool found = false;
+
+            for (int i = 0; i < skillchainKnightsOfRoundImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", skillchainKnightsOfRoundImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("****Level 3 light is possible - Knights of Round***");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willSavageBladeMakeLevel3Light()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_savage_blade_level_3_light.png", 
+                @".\images\windower_skillchain_savage_blade_level_3_light_3.png" };
+
+            bool found = false;
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            for (int i = 0; i < windowerSkillchainImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "0", windowerSkillchainImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("****Level 3 light is possible - Savage Blade****");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willChantDuCygneMakeLevel3Darkness()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_chant_du_cygne_level_3_darkness.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+
+            bool found = false;
+
+            for (int i = 0; i < windowerSkillchainImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", windowerSkillchainImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (found == true)
+            {
+                appendText("***Level 3 darkness is possible - Chant du Cygne***");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool willRequiescatMakeLevel3Darkness()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_requiescat_level_3_darkness.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", windowerSkillchainImages[0]);
+            if (results == null)
+            {
+                return false;
+            }
+            else
+            {
+                appendText2("***Level 3 darkness is possible - Requiescat    ***");
+                return true;
+            }
+        }
+
+        bool willCircleBladeMakeLevel2Fragmentation()
+        {
+            string[] windowerSkillchainImages = { @".\images\windower_skillchain_circle_blade_level_2_fragmentation.png" };
+
+            Rectangle rectangle = new Rectangle(130, 415, 480, 485);
+            string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", windowerSkillchainImages[0]);
+            if (results == null)
+            {
+                return false;
+            }
+            else
+            {
+                appendText2("***Level 2 fragmentation is possible - CIRCLE BLADE***");
+                return true;
+            }
+        }
+
         bool isHasteSambaActive()
         {
             string[] hasteSambaImages = { @".\images\haste_samba.png", @".\images\haste_samba_2.png" };
@@ -2499,7 +3299,7 @@ namespace WindowsFormsApp2
 
             for (int i = 0; i < hasteSambaImages.Length; i++)
             {
-                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "10", hasteSambaImages[i]);
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "30", hasteSambaImages[i]);
                 if (results == null)
                 {
                 }
@@ -3264,6 +4064,7 @@ namespace WindowsFormsApp2
         private Queue<bool> refresh2CooldownQueue = new Queue<bool>();
         private int refresh2CastTime = 5000;
         private int refresh2CooldownTime = 27000;
+        private int refresh3CooldownTime = 16000;
         void castRefresh2(int partyMember, int partySize)
         {
             int delay = 100;
@@ -4185,7 +4986,7 @@ namespace WindowsFormsApp2
         }
 
         private Queue<bool> cure4CooldownQueue = new Queue<bool>();
-        private int cure4CooldownTime = 6000;
+        private int cure4CooldownTime = 3500;
         private int cure4CastTime = 2500;
         void castCure4(int partyMember, int partySize)
         {
@@ -5417,6 +6218,7 @@ namespace WindowsFormsApp2
         private int enwater2CastTime = 3000;
         private int enwater2CooldownTime = 26000;
         private int temperCooldownTime = 23000;
+        private int temper2CooldownTime = 33000;
         private Queue<bool> enwater2CooldownQueue = new Queue<bool>();
         void castEnwater2(int partyMember, int partySize)
         {
@@ -6522,12 +7324,43 @@ namespace WindowsFormsApp2
         {
             Rectangle rectangle = getTargetRectangle(partySize);
 
-            string[] assistImages = { @".\images\engaged_monster_name_pixel.png", @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
+            string[] assistImages = { @".\images\engaged_monster_name_pixel.png" };
 
             bool found = false;
             for (int i = 0; i < assistImages.Length; i++)
             {
                 string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "6", assistImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText("I am targeting a monster to fight");
+                return true;
+            }
+            else
+            {
+                appendText("I am not targeting a monster to fight");
+                return false;
+            }
+        }
+
+        public bool isTargettingAMonster(int partySize)
+        {
+            Rectangle rectangle = getTargetRectangle(partySize);
+
+            string[] assistImages = { @".\images\target_monster_name_pixel.png", @".\images\target_monster_name_pixel_2.png" };
+
+            bool found = false;
+            for (int i = 0; i < assistImages.Length; i++)
+            {
+                string[] results = UseImageSearch(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, "3", assistImages[i]);
                 if (results == null)
                 {
                 }
@@ -6871,6 +7704,34 @@ namespace WindowsFormsApp2
             return weaponDrawn;
         }
 
+        bool almostHasTP()
+        {
+            string[] tpImages = { @".\images\tp_text_700.png", @".\images\tp_text_800.png", @".\images\tp_text_900.png" };
+
+            bool found = false;
+            for (int i = 0; i < tpImages.Length; i++)
+            {
+                string[] results = UseImageSearch(116, 90, 130, 110, "3", tpImages[i]);
+                if (results == null)
+                {
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                appendText2("I almost have TP");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         bool hasTP()
         {
             string[] tpImages = { @".\images\tp_text_1000.png", @".\images\tp_text_2000.png", @".\images\tp_text_3000.png" };
@@ -6878,7 +7739,7 @@ namespace WindowsFormsApp2
             bool found = false;
             for (int i = 0; i < tpImages.Length; i++)
             {
-                string[] results = UseImageSearch(110, 90, 120, 110, "5", tpImages[i]);
+                string[] results = UseImageSearch(110, 90, 120, 110, "3", tpImages[i]);
                 if (results == null)
                 {
                 }
@@ -6932,44 +7793,44 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 590;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 605;
+                    rectangle.X = 1270;
+                    rectangle.Y = 602;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 612;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 610;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 625;
+                    rectangle.X = 1270;
+                    rectangle.Y = 620;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 631;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 630;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 645;
+                    rectangle.X = 1270;
+                    rectangle.Y = 640;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 650;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 650;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 665;
+                    rectangle.X = 1270;
+                    rectangle.Y = 658;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 668;
                 }
                 else if (partyMember == 5)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1270;
+                    rectangle.Y = 674;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 687;
                 }
                 else if (partyMember == 6)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -6977,37 +7838,37 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 610;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 625;
+                    rectangle.X = 1270;
+                    rectangle.Y = 620;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 631;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 630;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 645;
+                    rectangle.X = 1270;
+                    rectangle.Y = 640;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 650;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 650;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 665;
+                    rectangle.X = 1270;
+                    rectangle.Y = 658;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 668;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1270;
+                    rectangle.Y = 674;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 687;
                 }
                 else if (partyMember == 5)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -7015,30 +7876,30 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 630;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 645;
+                    rectangle.X = 1370;
+                    rectangle.Y = 640;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 650;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 650;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 665;
+                    rectangle.X = 1270;
+                    rectangle.Y = 658;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 668;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1270;
+                    rectangle.Y = 674;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 687;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -7046,23 +7907,23 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 650;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 665;
+                    rectangle.X = 1270;
+                    rectangle.Y = 658;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 668;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1270;
+                    rectangle.Y = 674;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 687;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -7070,16 +7931,16 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1270;
+                    rectangle.Y = 674;
+                    rectangle.Width = 1290;
+                    rectangle.Height = 687;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -7087,9 +7948,9 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1320;
-                    rectangle.Y = 687;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1270;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1290;
                     rectangle.Height = 705;
                 }
             }
@@ -7276,165 +8137,165 @@ namespace WindowsFormsApp2
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 595;
-                    rectangle.Width = 1340;
+                    rectangle.X = 1326;
+                    rectangle.Y = 600;
+                    rectangle.Width = 1350;
                     rectangle.Height = 610;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 615;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 630;
+                    rectangle.X = 1326;
+                    rectangle.Y = 617;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 627;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 635;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 650;
+                    rectangle.X = 1326;
+                    rectangle.Y = 634;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 644;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1310;
+                    rectangle.X = 1326;
                     rectangle.Y = 655;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 670;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 665;
                 }
                 else if (partyMember == 5)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1326;
+                    rectangle.Y = 672;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 682;
                 }
                 else if (partyMember == 6)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
             else if (partySize == 5)
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 615;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 630;
+                    rectangle.X = 1326;
+                    rectangle.Y = 617;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 627;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 635;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 650;
+                    rectangle.X = 1326;
+                    rectangle.Y = 634;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 644;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1310;
+                    rectangle.X = 1326;
                     rectangle.Y = 655;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 670;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 665;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1326;
+                    rectangle.Y = 672;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 682;
                 }
                 else if (partyMember == 5)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
             else if (partySize == 4)
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 635;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 650;
+                    rectangle.X = 1326;
+                    rectangle.Y = 634;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 644;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1310;
+                    rectangle.X = 1326;
                     rectangle.Y = 655;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 670;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 665;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1326;
+                    rectangle.Y = 672;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 682;
                 }
                 else if (partyMember == 4)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
             else if (partySize == 3)
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
+                    rectangle.X = 1326;
                     rectangle.Y = 655;
-                    rectangle.Width = 1340;
+                    rectangle.Width = 1350;
                     rectangle.Height = 665;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1326;
+                    rectangle.Y = 672;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 682;
                 }
                 else if (partyMember == 3)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
             else if (partySize == 2)
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 670;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 685;
+                    rectangle.X = 1326;
+                    rectangle.Y = 672;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 682;
                 }
                 else if (partyMember == 2)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
             else if (partySize == 1)
             {
                 if (partyMember == 1)
                 {
-                    rectangle.X = 1310;
-                    rectangle.Y = 690;
-                    rectangle.Width = 1340;
-                    rectangle.Height = 705;
+                    rectangle.X = 1326;
+                    rectangle.Y = 692;
+                    rectangle.Width = 1350;
+                    rectangle.Height = 702;
                 }
             }
 
@@ -7444,10 +8305,18 @@ namespace WindowsFormsApp2
         private Hashtable actionTable = new Hashtable();
         private Queue<Class1> actionQueue = new Queue<Class1>();
         private PriorityQueue actionPriorityQueue = new PriorityQueue();
+        private PriorityQueue weaponskillPriorityQueue = new PriorityQueue();
+        private PriorityQueue assistPriorityQueue = new PriorityQueue();
         private bool battle = false;
         private Queue<bool> weaponDrawnQueue = new Queue<bool>();
         private Queue<bool> temperTimer = new Queue<bool>();
         private Queue<bool> enwaterIITimer = new Queue<bool>();
+        const int CURE_IV_PRIORITY = 20;
+        const int CURE_III_PRIORITY = 19;
+        const int CURE_II_PRIORITY = 18;
+        const int CURE_PRIORITY = 17;
+        const int WEAPONSKILL_ACTIVATION_TIME = 0;
+        private bool shouldPrioritizeWeaponskill = false;
         private void button10_Click(object sender, EventArgs e)
         {
             button10.Enabled = false;
@@ -7514,6 +8383,10 @@ namespace WindowsFormsApp2
                 {
                     weaponskill = "Chant du Cygne";
                 }
+                else if ((string)comboBox4.SelectedItem == "Death Blossom")
+                {
+                    weaponskill = "Death Blossom";
+                }
                 else
                 {
                     weaponskill = "";
@@ -7533,16 +8406,52 @@ namespace WindowsFormsApp2
             {
                 while (battle == true)
                 {
-                    if (actionPriorityQueue.size() > 0)
+                    if (weaponskillPriorityQueue.size() > 0)
                     {
-                        Class1 action = actionPriorityQueue.getData();
-                        actionPriorityQueue.remove();
+                        Class1 action = weaponskillPriorityQueue.getData();
+                        appendText2("Weaponskill priority queue size is: " + weaponskillPriorityQueue.size());
+                        appendText2("****NEXT ACTIION IS " + action.getAction() + "****");
+                        weaponskillPriorityQueue.remove();
+
                         action.function1();
                         new Thread(() =>
                         {
                             Thread.Sleep(action.getCooldownTime());
                             actionTable.Remove(action.getAction());
                         }).Start();
+
+                        Thread.Sleep(2000);
+                    }
+                    else if (assistPriorityQueue.size() > 0)
+                    {
+                        Class1 action = assistPriorityQueue.getData();
+                        appendText2("Assist priority queue size is: " + assistPriorityQueue.size());
+                        appendText2("****NEXT ACTIION IS " + action.getAction() + "****");
+                        assistPriorityQueue.remove();
+
+                        action.function1();
+                        new Thread(() =>
+                        {
+                            Thread.Sleep(action.getCooldownTime());
+                            actionTable.Remove(action.getAction());
+                        }).Start();
+                    }
+                    else if (almostHasTP() == false && hasTP() == false)
+                    {
+                        if (actionPriorityQueue.size() > 0)
+                        {
+                            Class1 action = actionPriorityQueue.getData();
+                            appendText2("action priority queue size is: " + actionPriorityQueue.size());
+                            appendText2("****NEXT ACTIION IS " + action.getAction() + "****");
+                            actionPriorityQueue.remove();
+
+                            action.function1();
+                            new Thread(() =>
+                            {
+                                Thread.Sleep(action.getCooldownTime());
+                                actionTable.Remove(action.getAction());
+                            }).Start();
+                        }
                     }
                 }
             }).Start();
@@ -7577,8 +8486,8 @@ namespace WindowsFormsApp2
                     }
                     if (isUtsusemiActive() == false && checkBox20.Checked == true)
                     {
-                        const int UTSUSEMI_NI_PRIORITY = 15;
-                        const int UTSUSEMI_ICHI_PRIORITY = 14;
+                        const int UTSUSEMI_NI_PRIORITY = 29;
+                        const int UTSUSEMI_ICHI_PRIORITY = 28;
 
                         if (isComposureActive() == false)
                         {
@@ -7628,6 +8537,7 @@ namespace WindowsFormsApp2
                             Rectangle rectangle = getStatusRectangle();
                             Class1 utsusemiNi = new Class1("Utsusemi: Ni", utsusemiNiCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
                             utsusemiNi.setPartySize(partySize);
+                            utsusemiNi.setFollow(checkBox1.Checked);
                             actionTable.Add(utsusemiNi.getAction(), true);
                             actionPriorityQueue.insert(UTSUSEMI_NI_PRIORITY, utsusemiNi);
                         }
@@ -7640,6 +8550,7 @@ namespace WindowsFormsApp2
                             Rectangle rectangle = getStatusRectangle();
                             Class1 utsusemiIchi = new Class1("Utsusemi: Ichi", utsusemiIchiCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
                             utsusemiIchi.setPartySize(partySize);
+                            utsusemiIchi.setFollow(checkBox1.Checked);
                             actionTable.Add(utsusemiIchi.getAction(), true);
                             actionPriorityQueue.insert(UTSUSEMI_ICHI_PRIORITY, utsusemiIchi);
                         }
@@ -7656,6 +8567,7 @@ namespace WindowsFormsApp2
                             Rectangle rectangle = getStatusRectangle();
                             Class1 stoneskin = new Class1("Stoneskin", stoneskinCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
                             stoneskin.setPartySize(partySize);
+                            stoneskin.setFollow(checkBox1.Checked);
                             actionTable.Add(stoneskin.getAction(), true);
                             actionPriorityQueue.insert(STONESKIN_PRIORITY, stoneskin);
                         }
@@ -7669,32 +8581,35 @@ namespace WindowsFormsApp2
                     {
                         const int FOLLOW_PARTY_MEMBER_TWO_PRIORITY = 90;
                         const int FOLLOW_DEAD_PARTY_MEMBER_TWO_PRIORITY = 100;
-                        if (actionTable.Contains("Follow Party Member 2") == false)
+                        if (isWeaponDrawn() == false)
                         {
-                            if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == true)
+                            if (actionTable.Contains("Follow Party Member 2") == false)
                             {
-                                Rectangle rectangle = new Rectangle();
-                                Class1 followPartyMember = new Class1("Follow Party Member 2", 1000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                followPartyMember.setPartySize(partySize);
-                                actionTable.Add(followPartyMember.getAction(), true);
-                                actionPriorityQueue.insert(FOLLOW_DEAD_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
-                            }
-                            else if (followPartyMember2Queue.Count == 0)
-                            {
-                                Rectangle rectangle = new Rectangle();
-                                Class1 followPartyMember = new Class1("Follow Party Member 2", 1000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                followPartyMember.setPartySize(partySize);
-                                actionTable.Add(followPartyMember.getAction(), true);
-                                actionPriorityQueue.insert(FOLLOW_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
-                            }
-                            else
-                            {
-                                appendText("Already following party member 2");
+                                if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == true)
+                                {
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 followPartyMember = new Class1("Follow Party Member 2", 1000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                    followPartyMember.setPartySize(partySize);
+                                    actionTable.Add(followPartyMember.getAction(), true);
+                                    actionPriorityQueue.insert(FOLLOW_DEAD_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
+                                }
+                                else if (followPartyMember2Queue.Count == 0)
+                                {
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 followPartyMember = new Class1("Follow Party Member 2", 1000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                    followPartyMember.setPartySize(partySize);
+                                    actionTable.Add(followPartyMember.getAction(), true);
+                                    actionPriorityQueue.insert(FOLLOW_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
+                                }
+                                else
+                                {
+                                    appendText("Already following party member 2");
+                                }
                             }
                         }
                     }
-                    
-                    maintainPartyMP(partySize);
+
+                    maintainPartyMP3(partySize);
                 }
             }).Start();
 
@@ -7703,132 +8618,347 @@ namespace WindowsFormsApp2
                 while (battle == true)
                 {
                     int partySize = getPartySize();
-                    if (checkBox23.Checked == true)
+                    if (isWeaponDrawn() == true)
                     {
-                        if (isWeaponDrawn() == true)
+                        weaponDrawnQueue.Enqueue(true);
+                        new Thread(() =>
                         {
-                            weaponDrawnQueue.Enqueue(true);
-                            new Thread(() =>
-                            {
-                                Thread.Sleep(6000);
-                                weaponDrawnQueue.Dequeue();
-                            }).Start();
+                            Thread.Sleep(6000);
+                            weaponDrawnQueue.Dequeue();
+                        }).Start();
 
-                            if (hasTP() == true)
+                        if (enwaterIITimer.Count == 0 && checkBox24.Checked == true)
+                        {
+                            const int ENWATER_II_PRIORITY = 13;
+                            if (actionTable.Contains("Enwater II") == false)
                             {
-                                appendText("I have TP");
-                                if (actionTable.Contains("Weaponskill") == false)
+                                Rectangle rectangle = getStatusRectangle();
+                                Class1 enwaterII = new Class1("Enwater II", enwater2CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                enwaterII.setPartySize(partySize);
+                                enwaterII.setFollow(checkBox1.Checked);
+                                enwaterII.setEnwaterIITimerReference(enwaterIITimer);
+                                actionTable.Add(enwaterII.getAction(), true);
+                                actionPriorityQueue.insert(ENWATER_II_PRIORITY, enwaterII);
+                            }
+                            else
+                            {
+                                appendText("Enwater II is already queued");
+                            }
+                        }
+                        else if (temperTimer.Count == 0 && checkBox33.Checked == true)
+                        {
+                            const int TEMPER_PRIORITY = 13;
+                            if (actionTable.Contains("Temper") == false)
+                            {
+                                Rectangle rectangle = getStatusRectangle();
+                                Class1 temper = new Class1("Temper", temperCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                temper.setPartySize(partySize);
+                                temper.setTemperTimerReference(temperTimer);
+                                actionTable.Add(temper.getAction(), true);
+                                actionPriorityQueue.insert(TEMPER_PRIORITY, temper);
+                            }
+                            else
+                            {
+                                appendText("Temper is already queued");
+                            }
+                        }
+                        else if (temperTimer.Count == 0 && checkBox51.Checked == true)
+                        {
+                            const int TEMPER_II_PRIORITY = 13;
+                            if (actionTable.Contains("Temper II") == false)
+                            {
+                                Rectangle rectangle = getStatusRectangle();
+                                Class1 temperII = new Class1("Temper II", temper2CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                temperII.setPartySize(partySize);
+                                temperII.setTemperTimerReference(temperTimer);
+                                actionTable.Add(temperII.getAction(), true);
+                                actionPriorityQueue.insert(TEMPER_II_PRIORITY, temperII);
+                            }
+                            else
+                            {
+                                appendText("Temper II is already queued");
+                            }
+                        }
+                        else if (isEnwaterActive() == false && checkBox24.Checked == true)
+                        {
+                            while (temperTimer.Count > 0)
+                            {
+                                temperTimer.Dequeue();
+                            }
+
+                            while (enwaterIITimer.Count > 0)
+                            {
+                                enwaterIITimer.Dequeue();
+                            }
+                        }
+                        else if (isHasteSambaActive() == false && checkBox37.Checked == true)
+                        {
+                            const int HASTE_SAMBA_PRIORITY = 13;
+                            if (actionTable.Contains("Haste Samba") == false)
+                            {
+                                Rectangle rectangle = getStatusRectangle();
+                                Class1 hasteSamba = new Class1("Haste Samba", 5000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                hasteSamba.setPartySize(partySize);
+                                actionTable.Add(hasteSamba.getAction(), true);
+                                actionPriorityQueue.insert(HASTE_SAMBA_PRIORITY, hasteSamba);
+                            }
+                            else
+                            {
+                                appendText("Haste Samba is already queued");
+                            }
+                        }
+                        else if (isAdvancingMarchActive() == false && checkBox38.Checked == true)
+                        {
+                            const int ADVANCING_MARCH_PRIORITY = 13;
+                            if (actionTable.Contains("Advancing March") == false)
+                            {
+                                Rectangle rectangle = getStatusRectangle();
+                                Class1 advancingMarch = new Class1("Advancing March", 10000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                advancingMarch.setPartySize(partySize);
+                                actionTable.Add(advancingMarch.getAction(), true);
+                                actionPriorityQueue.insert(ADVANCING_MARCH_PRIORITY, advancingMarch);
+                            }
+                            else
+                            {
+                                appendText("Advancing march is already queued");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (checkBox23.Checked == true)
+                        {
+                            if (actionTable.Contains("Assist") == false && weaponDrawnQueue.Count == 0)
+                            {
+                                if (isPartyMemberDead(2, partySize) == false)
+                                {
+                                    const int ASSIST_PRIORITY = 31;
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 assist = new Class1("Assist", 0, rectangle, followQueue, followPartyMember2Queue, engagedQueue, control, textBox1, textBox2);
+                                    assist.setPartySize(partySize);
+                                    actionTable.Add(assist.getAction(), true);
+                                    assistPriorityQueue.insert(ASSIST_PRIORITY, assist);
+
+                                    if (actionTable.Contains("Check Engaged") == false)
+                                    {
+                                        const int ENGAGED_PRIORITY = 30;
+                                        Class1 engaged = new Class1("Check Engaged", 0, rectangle, followQueue, followPartyMember2Queue, engagedQueue, control, textBox1, textBox2);
+                                        engaged.setPartySize(partySize);
+                                        actionTable.Add(engaged.getAction(), true);
+                                        assistPriorityQueue.insert(ENGAGED_PRIORITY, engaged);
+                                    }
+                                }
+                            }
+                            if ((isTargettingAMonster(partySize) == true || isEngaged(partySize) == true) && weaponDrawnQueue.Count == 0)
+                            {
+                                if (actionTable.Contains("Check Engaged") == false)
+                                {
+                                    const int ENGAGED_PRIORITY = 31;
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 engaged = new Class1("Check Engaged", 0, rectangle, followQueue, followPartyMember2Queue, engagedQueue, control, textBox1, textBox2);
+                                    engaged.setPartySize(partySize);
+                                    actionTable.Add(engaged.getAction(), true);
+                                    assistPriorityQueue.insert(ENGAGED_PRIORITY, engaged);
+                                }
+                            }
+                        }
+                    }
+                }
+            }).Start();
+
+            new Thread(() =>
+            {
+                while (battle == true)
+                {
+                    int partySize = getPartySize();
+                    if (hasTP() == true && checkBox45.Checked == true)
+                    {
+                        appendText("I have TP to weaponskill");
+                        if (isSkillchainActive() == false)
+                        {
+                            if (checkBox46.Checked == true)
+                            {
+                                if (actionTable.Contains("Start Skillchain") == false && actionTable.Contains("Close Skillchain") == false)
                                 {
                                     const int WEAPONSKILL_PRIORITY = 99;
                                     Rectangle rectangle = new Rectangle();
-                                    Class1 weaponskill = new Class1("Weaponskill", 3000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                    Class1 weaponskill = new Class1("Start Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
                                     weaponskill.setPartySize(partySize);
+                                    weaponskill.setFollow(checkBox1.Checked);
                                     weaponskill.setWeaponskill(this.weaponskill);
                                     actionTable.Add(weaponskill.getAction(), true);
-                                    actionPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
-                                }
-                            }
-                            else if (enwaterIITimer.Count == 0 && checkBox24.Checked == true)
-                            {
-                                const int ENWATER_II_PRIORITY = 13;
-                                if (actionTable.Contains("Enwater II") == false)
-                                {
-                                    Rectangle rectangle = getStatusRectangle();
-                                    Class1 enwaterII = new Class1("Enwater II", enwater2CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                    enwaterII.setPartySize(partySize);
-                                    enwaterII.setEnwaterIITimerReference(enwaterIITimer);
-                                    actionTable.Add(enwaterII.getAction(), true);
-                                    actionPriorityQueue.insert(ENWATER_II_PRIORITY, enwaterII);
+                                    weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
                                 }
                                 else
                                 {
-                                    appendText("Enwater II is already queued");
+                                    appendText("Start Skillchain is queued");
                                 }
                             }
-                            else if (temperTimer.Count == 0 && checkBox33.Checked == true)
-                            {
-                                const int TEMPER_PRIORITY = 13;
-                                if (actionTable.Contains("Temper") == false)
-                                {
-                                    Rectangle rectangle = getStatusRectangle();
-                                    Class1 temper = new Class1("Temper", temperCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                    temper.setPartySize(partySize);
-                                    temper.setTemperTimerReference(temperTimer);
-                                    actionTable.Add(temper.getAction(), true);
-                                    actionPriorityQueue.insert(TEMPER_PRIORITY, temper);
-                                }
-                                else
-                                {
-                                    appendText("Temper is already queued");
-                                }
-                            }
-                            else if (isEnwaterActive() == false && checkBox24.Checked == true)
-                            {
-                                while (temperTimer.Count > 0) {
-                                    temperTimer.Dequeue();
-                                }
+                        }
+                    }
+                }
+            }).Start();
 
-                                while (enwaterIITimer.Count > 0)
-                                {
-                                    enwaterIITimer.Dequeue();
-                                }
-                            }
-                            else if (isHasteSambaActive() == false && checkBox37.Checked == true)
-                            {
-                                const int HASTE_SAMBA_PRIORITY = 13;
-                                if (actionTable.Contains("Haste Samba") == false)
-                                {
-                                    Rectangle rectangle = getStatusRectangle();
-                                    Class1 hasteSamba = new Class1("Haste Samba", 5000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                    hasteSamba.setPartySize(partySize);
-                                    actionTable.Add(hasteSamba.getAction(), true);
-                                    actionPriorityQueue.insert(HASTE_SAMBA_PRIORITY, hasteSamba);
-                                }
-                                else
-                                {
-                                    appendText("Haste Samba is already queued");
-                                }
-                            }
-                            else if (isAdvancingMarchActive() == false && checkBox38.Checked == true)
-                            {
-                                const int ADVANCING_MARCH_PRIORITY = 13;
-                                if (actionTable.Contains("Advancing March") == false)
-                                {
-                                    Rectangle rectangle = getStatusRectangle();
-                                    Class1 advancingMarch = new Class1("Advancing March", 10000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
-                                    advancingMarch.setPartySize(partySize);
-                                    actionTable.Add(advancingMarch.getAction(), true);
-                                    actionPriorityQueue.insert(ADVANCING_MARCH_PRIORITY, advancingMarch);
-                                }
-                                else
-                                {
-                                    appendText("Advancing march is already queued");
-                                }
-                            }
-                        }
-                        else if (isEngaged(partySize) == true && weaponDrawnQueue.Count == 0)
+            new Thread(() =>
+            {
+                while (battle == true)
+                {
+                    int partySize = getPartySize();
+                    if (hasTP() == true && checkBox45.Checked == true)
+                    {
+                        appendText("I have TP to skillchain");
+                        if (checkBox47.Checked == true)
                         {
-                            if (actionTable.Contains("Check Engaged") == false)
+                            new Thread(() =>
                             {
-                                const int ENGAGED_PRIORITY = 17;
-                                Rectangle rectangle = new Rectangle();
-                                Class1 engaged = new Class1("Check Engaged", 0, rectangle, followQueue, followPartyMember2Queue, engagedQueue, control, textBox1);
-                                engaged.setPartySize(partySize);
-                                actionTable.Add(engaged.getAction(), true);
-                                actionPriorityQueue.insert(ENGAGED_PRIORITY, engaged);
-                            }
-                        }
-                        else if (actionTable.Contains("Assist") == false && weaponDrawnQueue.Count == 0)
-                        {
-                            if (isPartyMemberDead(2, partySize) == false)
+                                if (willDeathBlossomMakeLevel3Light() == true && checkBox48.Checked == true)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false && actionTable.Contains("Start Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Death Blossom");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() =>
                             {
-                                const int ASSIST_PRIORITY = 16;
-                                Rectangle rectangle = new Rectangle();
-                                Class1 assist = new Class1("Assist", 0, rectangle, followQueue, followPartyMember2Queue, engagedQueue, control, textBox1);
-                                assist.setPartySize(partySize);
-                                actionTable.Add(assist.getAction(), true);
-                                actionPriorityQueue.insert(ASSIST_PRIORITY, assist);
-                            }
+                                if (willKnightsOfRoundMakeLevel4Light() == true && checkBox48.Checked == true && actionTable.Contains("Start Skillchain") == false)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Knights of Round");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() =>
+                            {
+                                if (willKnightsOfRoundMakeLevel3Light() == true && checkBox48.Checked == true && actionTable.Contains("Start Skillchain") == false)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Knights of Round");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() =>
+                            {
+                                if (willSavageBladeMakeLevel3Light() == true && checkBox48.Checked == true && actionTable.Contains("Start Skillchain") == false)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Savage Blade");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() => {
+                                if (willChantDuCygneMakeLevel3Darkness() == true && checkBox49.Checked == true && actionTable.Contains("Start Skillchain") == false)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Chant du Cygne");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() => {
+                                if (willRequiescatMakeLevel3Darkness() == true && checkBox49.Checked == true && actionTable.Contains("Start Skillchain") == false)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Requiescat");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
+
+                            new Thread(() => {
+                                if (willCircleBladeMakeLevel2Fragmentation() == true)
+                                {
+                                    if (actionTable.Contains("Close Skillchain") == false && actionTable.Contains("Start Skillchain") == false)
+                                    {
+                                        const int WEAPONSKILL_PRIORITY = 99;
+                                        Rectangle rectangle = new Rectangle();
+                                        Class1 weaponskill = new Class1("Close Skillchain", WEAPONSKILL_ACTIVATION_TIME, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                        weaponskill.setPartySize(partySize);
+                                        weaponskill.setFollow(checkBox1.Checked);
+                                        weaponskill.setWeaponskill("Circle Blade");
+                                        actionTable.Add(weaponskill.getAction(), true);
+                                        weaponskillPriorityQueue.insert(WEAPONSKILL_PRIORITY, weaponskill);
+                                    }
+                                    else
+                                    {
+                                        appendText("Close Skillchain is queued");
+                                    }
+                                }
+                            }).Start();
                         }
                     }
                 }
@@ -7863,6 +8993,7 @@ namespace WindowsFormsApp2
                             Rectangle rectangle = getStatusRectangle();
                             Class1 haste2 = new Class1("Haste II", hasteCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
                             haste2.setPartySize(partySize);
+                            haste2.setFollow(checkBox1.Checked);
                             actionTable.Add(haste2.getAction(), true);
                             actionPriorityQueue.insert(HASTE_II_PRIORITY, haste2);
                         }
@@ -7887,6 +9018,7 @@ namespace WindowsFormsApp2
                                     hasteIIPartyMember.setPartyMember(PARTY_MEMBER_TWO);
                                     hasteIIPartyMember.setTarget(target);
                                     hasteIIPartyMember.setPartySize(partySize);
+                                    hasteIIPartyMember.setFollow(checkBox1.Checked);
                                     actionTable.Add(hasteIIPartyMember.getAction(), true);
                                     actionPriorityQueue.insert(HASTE_II_PARTY_PRIORITY, hasteIIPartyMember);
                                 }
@@ -7911,6 +9043,7 @@ namespace WindowsFormsApp2
                                     hasteIIPartyMember.setPartyMember(PARTY_MEMBER_THREE);
                                     hasteIIPartyMember.setTarget(target);
                                     hasteIIPartyMember.setPartySize(partySize);
+                                    hasteIIPartyMember.setFollow(checkBox1.Checked);
                                     actionTable.Add(hasteIIPartyMember.getAction(), true);
                                     actionPriorityQueue.insert(HASTE_II_PARTY_PRIORITY, hasteIIPartyMember);
                                 }
@@ -7935,6 +9068,7 @@ namespace WindowsFormsApp2
                                     hasteIIPartyMember.setPartyMember(PARTY_MEMBER_FOUR);
                                     hasteIIPartyMember.setTarget(target);
                                     hasteIIPartyMember.setPartySize(partySize);
+                                    hasteIIPartyMember.setFollow(checkBox1.Checked);
                                     actionTable.Add(hasteIIPartyMember.getAction(), true);
                                     actionPriorityQueue.insert(HASTE_II_PARTY_PRIORITY, hasteIIPartyMember);
                                 }
@@ -7959,6 +9093,7 @@ namespace WindowsFormsApp2
                                     hasteIIPartyMember.setPartyMember(PARTY_MEMBER_FIVE);
                                     hasteIIPartyMember.setTarget(target);
                                     hasteIIPartyMember.setPartySize(partySize);
+                                    hasteIIPartyMember.setFollow(checkBox1.Checked);
                                     actionTable.Add(hasteIIPartyMember.getAction(), true);
                                     actionPriorityQueue.insert(HASTE_II_PARTY_PRIORITY, hasteIIPartyMember);
                                 }
@@ -7983,6 +9118,7 @@ namespace WindowsFormsApp2
                                     hasteIIPartyMember.setPartyMember(PARTY_MEMBER_SIX);
                                     hasteIIPartyMember.setTarget(target);
                                     hasteIIPartyMember.setPartySize(partySize);
+                                    hasteIIPartyMember.setFollow(checkBox1.Checked);
                                     actionTable.Add(hasteIIPartyMember.getAction(), true);
                                     actionPriorityQueue.insert(HASTE_II_PARTY_PRIORITY, hasteIIPartyMember);
                                 }
@@ -8001,7 +9137,813 @@ namespace WindowsFormsApp2
                 while (battle == true)
                 {
                     int partySize = getPartySize();
-                    maintainPartyHP(partySize);
+                    if (partySize == 6)
+                    {
+                        if (isHPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox10.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox11.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox12.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox13.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_SIX, partySize) == false && checkBox14.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_SIX, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_SIX, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    cureIV.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_SIX, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_SIX, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    cureIII.setFollow(checkBox1.Checked);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
+                    else if (partySize == 5)
+                    {
+                        if (isHPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox10.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox11.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox12.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox13.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
+                    else if (partySize == 4)
+                    {
+                        if (isHPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox10.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox11.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox12.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
+                    else if (partySize == 3)
+                    {
+                        if (isHPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox10.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox11.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_THREE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
+                    else if (partySize == 2)
+                    {
+                        if (isHPToppedOff(1, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                        else if (isHPToppedOff(2, partySize) == false && checkBox10.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_TWO, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
+                    else if (partySize == 1)
+                    {
+                        if (isHPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox9.Checked == true)
+                        {
+                            if (checkBox19.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure IV") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIV = new Class1("Cure IV", cure4CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIV.setTarget(target);
+                                    cureIV.setPartySize(partySize);
+                                    actionTable.Add(cureIV.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_IV_PRIORITY, cureIV);
+                                }
+                                else
+                                {
+                                    appendText("Cure IV is already queued");
+                                }
+                            }
+                            if (checkBox2.Checked == true)
+                            {
+                                if (actionTable.Contains("Cure III") == false)
+                                {
+                                    Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
+                                    Class1 cureIII = new Class1("Cure III", cure3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                    string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                    cureIII.setTarget(target);
+                                    cureIII.setPartySize(partySize);
+                                    actionTable.Add(cureIII.getAction(), true);
+                                    actionPriorityQueue.insert(CURE_III_PRIORITY, cureIII);
+                                }
+                                else
+                                {
+                                    appendText("Cure III is already queued");
+                                }
+                            }
+                        }
+                    }
                 }
             }).Start();
 
@@ -8129,12 +10071,14 @@ namespace WindowsFormsApp2
                     int partySize = getPartySize();
                     if (checkBox44.Checked == true)
                     {
-                        if (isMPLow(PARTY_MEMBER_ONE, partySize) == true)
+                        if (isMPLow2(PARTY_MEMBER_ONE, partySize) == true
+                            && isPartyMemberOrangeHP(1, partySize) == false
+                            && isPartyMemberRedHP(1, partySize) == false)
                         {
                             int CONVERT_PRIORITY = 98;
                             if (actionTable.Contains("Convert") == false)
                             {
-                                Rectangle rectangle = new Rectangle();
+                                Rectangle rectangle = getPartyMemberHPRectangle(PARTY_MEMBER_ONE, partySize);
                                 Class1 convert = new Class1("Convert", 500000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
                                 convert.setPartySize(partySize);
                                 actionTable.Add(convert.getAction(), true);
@@ -8152,6 +10096,70 @@ namespace WindowsFormsApp2
                     }
                 }
             }).Start();
+
+
+            new Thread(() =>
+            {
+                while (battle == true)
+                {
+                    int partySize = getPartySize();
+                    if (checkBox52.Checked == true)
+                    {
+                        if (isWeaponDrawn() == false)
+                        {
+                            if (actionTable.Contains("Pull Mob") == false)
+                            {
+                                const int PULL_MOB_PRIORITY = 102;
+                                Rectangle rectangle = new Rectangle();
+                                Class1 pullMob = new Class1("Pull Mob", 1000, rectangle, followQueue, followPartyMember2Queue, control, textBox1, textBox2);
+                                pullMob.setPartySize(partySize);
+                                actionTable.Add(pullMob.getAction(), true);
+                                actionPriorityQueue.insert(PULL_MOB_PRIORITY, pullMob);
+                            }
+                            else
+                            {
+                                appendText("Pull mob is already queued");
+                            }
+
+                            if (actionTable.Contains("Follow Party Member 2") == false)
+                            {
+                                const int FOLLOW_PARTY_MEMBER_TWO_PRIORITY = 104;
+                                const int FOLLOW_DEAD_PARTY_MEMBER_TWO_PRIORITY = 104;
+                                if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == true)
+                                {
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 followPartyMember = new Class1("Follow Party Member 2", 60000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                    followPartyMember.setPartySize(partySize);
+                                    actionTable.Add(followPartyMember.getAction(), true);
+                                    actionPriorityQueue.insert(FOLLOW_DEAD_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
+                                }
+                                else if (followPartyMember2Queue.Count == 0)
+                                {
+                                    Rectangle rectangle = new Rectangle();
+                                    Class1 followPartyMember = new Class1("Follow Party Member 2", 60000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                    followPartyMember.setPartySize(partySize);
+                                    actionTable.Add(followPartyMember.getAction(), true);
+                                    actionPriorityQueue.insert(FOLLOW_PARTY_MEMBER_TWO_PRIORITY, followPartyMember);
+                                }
+                                else
+                                {
+                                    appendText("Already following party member 2");
+                                }
+                            }
+
+                            if (actionTable.Contains("Stop Follow") == false)
+                            {
+                                const int STOP_FOLLOW_PRIORITY = 103;
+                                Rectangle rectangle = new Rectangle();
+                                Class1 stopFollowAction = new Class1("Stop Follow", 60000, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                stopFollowAction.setPartySize(partySize);
+                                actionTable.Add(stopFollowAction.getAction(), true);
+                                actionPriorityQueue.insert(STOP_FOLLOW_PRIORITY, stopFollowAction);
+                            }
+                        }
+                    }
+                }
+            }).Start();
         }
 
         private List<Queue<bool>> partyMemberHasteIITimer = new List<Queue<bool>> { new Queue<bool>(), new Queue<bool>(), new Queue<bool>(), new Queue<bool>(), new Queue<bool>(), new Queue<bool>(), new Queue<bool>() };
@@ -8165,7 +10173,7 @@ namespace WindowsFormsApp2
             const int PARTY_MEMBER_FOUR = 4;
             const int PARTY_MEMBER_FIVE = 5;
             const int PARTY_MEMBER_SIX = 6;
-            const int RAISE_PRIORITY = 15;
+            const int RAISE_PRIORITY = 80;
 
             if (partySize == 6)
             {
@@ -9434,6 +11442,993 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void maintainPartyMP3(int partySize)
+        {
+            const int PARTY_MEMBER_ONE = 1;
+            const int PARTY_MEMBER_TWO = 2;
+            const int PARTY_MEMBER_THREE = 3;
+            const int PARTY_MEMBER_FOUR = 4;
+            const int PARTY_MEMBER_FIVE = 5;
+            const int PARTY_MEMBER_SIX = 6;
+            const int REFRESH_ME_PRIORITY = 22;
+            const int REFRESH_PARTY_PRIORITY = 16;
+            const int REFRESH_III_ME_PRIORITY = 22;
+            const int REFRESH_III_PARTY_PRIORITY = 16;
+            if (checkBox50.Checked == true)
+            {
+                if (partySize == 6)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_TWO);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_THREE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_FOUR);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox7.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FIVE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_FIVE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_SIX, partySize) == false && checkBox8.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_SIX].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_SIX, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_SIX, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_SIX);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setFollow(checkBox1.Checked);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 5)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_TWO);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_THREE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_FOUR);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox7.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FIVE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_FIVE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 4)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_TWO);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_THREE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_FOUR);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 3)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_TWO);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_THREE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 2)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_TWO);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_PARTY_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 1)
+                {
+                    if (isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh III") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refreshIII = new Class1("Refresh III", refresh3CooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refreshIII.setTarget(target);
+                                refreshIII.setPartyMember(PARTY_MEMBER_ONE);
+                                refreshIII.setPartySize(partySize);
+                                refreshIII.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refreshIII.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_III_ME_PRIORITY, refreshIII);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh III is already queued");
+                        }
+                    }
+                }
+            }
+            else if (checkBox18.Checked == true)
+            {
+                if (partySize == 6)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_TWO);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_THREE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_FOUR);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox7.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FIVE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_FIVE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_SIX, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_SIX, partySize) == false && checkBox8.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_SIX].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_SIX, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_SIX, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_SIX);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+                if (partySize == 5)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_TWO);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_THREE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_FOUR);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FIVE, partySize) == false && checkBox7.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FIVE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FIVE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FIVE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_FIVE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 4)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_TWO);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_THREE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_FOUR, partySize) == false && checkBox6.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_FOUR].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_FOUR, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_FOUR, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_FOUR);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 3)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_TWO);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_THREE, partySize) == false && checkBox5.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_THREE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_THREE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_THREE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_THREE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 2)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                    if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_TWO, partySize) == false && checkBox4.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_TWO].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_TWO, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_TWO, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_TWO);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_PARTY_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+                else if (partySize == 1)
+                {
+                    if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberMPToppedOff(PARTY_MEMBER_ONE, partySize) == false && checkBox3.Checked == true)
+                    {
+                        if (actionTable.Contains("Refresh") == false)
+                        {
+                            if (partyMemberRefreshTimer[PARTY_MEMBER_ONE].Count == 0)
+                            {
+                                Rectangle rectangle = getPartyMemberMPRectangle(PARTY_MEMBER_ONE, partySize);
+                                Class1 refresh = new Class1("Refresh", refreshCooldownTime, rectangle, followQueue, followPartyMember2Queue, control, textBox1);
+                                string target = getTargetString(PARTY_MEMBER_ONE, partySize);
+                                refresh.setTarget(target);
+                                refresh.setPartyMember(PARTY_MEMBER_ONE);
+                                refresh.setPartySize(partySize);
+                                refresh.setRefreshTimerReference(partyMemberRefreshTimer);
+                                actionTable.Add(refresh.getAction(), true);
+                                actionPriorityQueue.insert(REFRESH_ME_PRIORITY, refresh);
+                            }
+                        }
+                        else
+                        {
+                            appendText("Refresh is already queued");
+                        }
+                    }
+                }
+            }
+        }
+
+
         private void maintainPartyHP(int partySize)
         {
             const int PARTY_MEMBER_ONE = 1;
@@ -9448,7 +12443,7 @@ namespace WindowsFormsApp2
             const int CURE_PRIORITY = 17;
             if (partySize == 6)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -9520,7 +12515,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has red hp");
                     if (checkBox19.Checked == true)
@@ -9592,7 +12587,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has red hp");
                     if (checkBox19.Checked == true)
@@ -9664,7 +12659,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has red hp");
                     if (checkBox19.Checked == true)
@@ -9736,7 +12731,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has red hp");
                     if (checkBox19.Checked == true)
@@ -9808,7 +12803,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_SIX, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
                 {
                     appendText("Party member 6 has red hp");
                     if (checkBox19.Checked == true)
@@ -9881,7 +12876,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -9953,7 +12948,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has orange hp");
                     if (checkBox19.Checked == true)
@@ -10025,7 +13020,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has orange hp");
                     if (checkBox19.Checked == true)
@@ -10097,7 +13092,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has orange hp");
                     if (checkBox19.Checked == true)
@@ -10170,7 +13165,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has orange hp");
                     if (checkBox19.Checked == true)
@@ -10242,7 +13237,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_SIX, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
                 {
                     appendText("Party member 6 has orange hp");
                     if (checkBox19.Checked == true)
@@ -10315,7 +13310,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10387,7 +13382,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10459,7 +13454,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10531,7 +13526,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10603,7 +13598,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10675,7 +13670,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_SIX, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_SIX, partySize) == true && checkBox14.Checked == true)
                 {
                     appendText("Party member 6 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -10750,7 +13745,7 @@ namespace WindowsFormsApp2
             }
             else if (partySize == 5)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -10822,7 +13817,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has red hp");
                     if (checkBox19.Checked == true)
@@ -10894,7 +13889,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has red hp");
                     if (checkBox19.Checked == true)
@@ -10966,7 +13961,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has red hp");
                     if (checkBox19.Checked == true)
@@ -11038,7 +14033,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has red hp");
                     if (checkBox19.Checked == true)
@@ -11111,7 +14106,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -11183,7 +14178,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has orange hp");
                     if (checkBox19.Checked == true)
@@ -11255,7 +14250,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has orange hp");
                     if (checkBox19.Checked == true)
@@ -11327,7 +14322,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has orange hp");
                     if (checkBox19.Checked == true)
@@ -11400,7 +14395,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has orange hp");
                     if (checkBox19.Checked == true)
@@ -11473,7 +14468,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -11545,7 +14540,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -11617,7 +14612,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -11689,7 +14684,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -11761,7 +14756,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FIVE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_FIVE, partySize) == true && checkBox13.Checked == true)
                 {
                     appendText("Party member 5 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -11836,7 +14831,7 @@ namespace WindowsFormsApp2
             }
             else if (partySize == 4)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -11908,7 +14903,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has red hp");
                     if (checkBox19.Checked == true)
@@ -11980,7 +14975,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has red hp");
                     if (checkBox19.Checked == true)
@@ -12052,7 +15047,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has red hp");
                     if (checkBox19.Checked == true)
@@ -12125,7 +15120,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -12197,7 +15192,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has orange hp");
                     if (checkBox19.Checked == true)
@@ -12269,7 +15264,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has orange hp");
                     if (checkBox19.Checked == true)
@@ -12341,7 +15336,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has orange hp");
                     if (checkBox19.Checked == true)
@@ -12415,7 +15410,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -12487,7 +15482,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -12559,7 +15554,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -12631,7 +15626,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_FOUR, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_FOUR, partySize) == true && checkBox12.Checked == true)
                 {
                     appendText("Party member 4 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -12706,7 +15701,7 @@ namespace WindowsFormsApp2
             }
             else if (partySize == 3)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -12778,7 +15773,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has red hp");
                     if (checkBox19.Checked == true)
@@ -12850,7 +15845,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has red hp");
                     if (checkBox19.Checked == true)
@@ -12923,7 +15918,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -12995,7 +15990,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has orange hp");
                     if (checkBox19.Checked == true)
@@ -13067,7 +16062,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has orange hp");
                     if (checkBox19.Checked == true)
@@ -13140,7 +16135,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -13212,7 +16207,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -13284,7 +16279,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_THREE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_THREE, partySize) == true && checkBox11.Checked == true)
                 {
                     appendText("Party member 3 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -13359,7 +16354,7 @@ namespace WindowsFormsApp2
             }
             else if (partySize == 2)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -13431,7 +16426,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberRedHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has red hp");
                     if (checkBox19.Checked == true)
@@ -13504,7 +16499,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -13576,7 +16571,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberOrangeHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has orange hp");
                     if (checkBox19.Checked == true)
@@ -13649,7 +16644,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -13721,7 +16716,7 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                else if (isPartyMemberDead(PARTY_MEMBER_TWO, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
+                else if (isPartyMemberYellowHP(PARTY_MEMBER_TWO, partySize) == true && checkBox10.Checked == true)
                 {
                     appendText("Party member 2 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -13796,7 +16791,7 @@ namespace WindowsFormsApp2
             }
             else if (partySize == 1)
             {
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberRedHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has red hp");
                     if (checkBox19.Checked == true)
@@ -13869,7 +16864,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberOrangeHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has orange hp");
                     if (checkBox19.Checked == true)
@@ -13942,7 +16937,7 @@ namespace WindowsFormsApp2
                     }
                 }
 
-                if (isPartyMemberDead(PARTY_MEMBER_ONE, partySize) == false && isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
+                if (isPartyMemberYellowHP(PARTY_MEMBER_ONE, partySize) == true && checkBox9.Checked == true)
                 {
                     appendText("Party member 1 has yellow hp");
                     if (checkBox19.Checked == true)
@@ -14060,6 +17055,11 @@ namespace WindowsFormsApp2
                 {
                     partyMemberRefreshTimer[i].Dequeue();
                 }
+            }
+
+            while (temperTimer.Count > 0)
+            {
+                temperTimer.Dequeue();
             }
 
             actionTable.Clear();

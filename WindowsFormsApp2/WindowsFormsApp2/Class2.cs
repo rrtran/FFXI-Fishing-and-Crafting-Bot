@@ -50,16 +50,18 @@ namespace WindowsFormsApp2
             else if (str == "Fish Game")
             {
                 Thread.Sleep(500);
-                string caughtHookImage = "";
+                string[] caughtHookImage = { "" };
                 Rectangle caughtHookRectangle = new Rectangle();
                 if (windowRectangle.Width == 1382)
                 {
-                    caughtHookImage = @".\images\caught_hook.png";
+                    caughtHookImage[0] = @".\images\caught_hook.png";
+                    //caughtHookImage[1] = @".\images\something_pulling_at_the_line.png";
                     caughtHookRectangle = new Rectangle(0, 665, 650, 715);
                 }
                 else if (windowRectangle.Width == 1936)
                 {
-                    caughtHookImage = @".\images\caught_hook_1920_1080.png";
+                    caughtHookImage[0] = @".\images\caught_hook_1920_1080.png";
+                    //caughtHookImage[1] = @".\images\something_pulling_at_the_line_1920_1080.png";
                     caughtHookRectangle = new Rectangle(0, 990, 260, 1015);
                 }
                 else
@@ -69,14 +71,27 @@ namespace WindowsFormsApp2
                 Rectangle rectangle = getWindowRectangle();
                 if (isFishingGaugeOnScreen(rectangle) == true)
                 {
-                    string[] hookResults = UseImageSearch(caughtHookRectangle.X, caughtHookRectangle.Y, caughtHookRectangle.Width, caughtHookRectangle.Height, "30", caughtHookImage);
-                    if (hookResults == null)
+                    bool found = false;
+                    for (int i = 0; i < caughtHookImage.Length; i++)
                     {
-                        AutoItX.Send("{ESC}");
+                        string[] hookResults = UseImageSearch(caughtHookRectangle.X, caughtHookRectangle.Y, caughtHookRectangle.Width, caughtHookRectangle.Height, "30", caughtHookImage[i]);
+                        if (hookResults == null)
+                        {
+                            
+                        }
+                        else
+                        {
+                            found = true;
+                        }
+                    }
+                    
+                    if (found == true)
+                    {
+
                     }
                     else
                     {
-
+                        AutoItX.Send("{ESC}");
                     }
 
                     while (isFishingGaugeOnScreen(rectangle) == true)
@@ -122,6 +137,10 @@ namespace WindowsFormsApp2
                         }
                     }
                     AutoItX.Send("{Enter}");
+                }
+                else
+                {
+                    AutoItX.Send("{ESC}");
                 }
             }
         }

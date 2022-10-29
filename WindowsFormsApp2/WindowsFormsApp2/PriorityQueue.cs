@@ -195,12 +195,18 @@ namespace WindowsFormsApp2
 
         public int getPriority()
         {
-            return x[0].Item1;
+            lock (priorityQueueLock)
+            {
+                return x[0].Item1;
+            }
         }
 
         public Class1 getData()
         {
-            return x[0].Item2;
+            lock (priorityQueueLock) 
+            {
+                return x[0].Item2;
+            }
         }
     }
 }
